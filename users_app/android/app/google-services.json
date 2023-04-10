@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "457855816341",
+    "project_id": "shareway-44bae",
+    "storage_bucket": "shareway-44bae.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:457855816341:android:5a3a51a2fe1634ae0e419c",
+        "android_client_info": {
+          "package_name": "com.example.users_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "457855816341-jqj79dssksqojjeg1gfvj874op8dt9k7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD31-C58L_eK2PfZrqtd9jXjcfnNHJI0Lg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "457855816341-jqj79dssksqojjeg1gfvj874op8dt9k7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
