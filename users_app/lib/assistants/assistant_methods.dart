@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
@@ -7,7 +9,7 @@ import 'package:users_app/assistants/request_assistant.dart';
 import 'package:users_app/global/global.dart';
 import 'package:users_app/infoHandler/app_info.dart';
 import 'package:users_app/models/user_model.dart';
-
+import 'package:http/http.dart' as http;
 import '../global/map_key.dart';
 import '../models/directions.dart';
 
@@ -56,5 +58,27 @@ class AssistantMethods {
     if (requestResponse == "Errors") {}
     print(humanReadableAddress);
     return humanReadableAddress;
+  }
+
+//función que retorna el tiempo de una posición a otra
+  static Future<String> obtainPlaceDirectionDetails(double initialLat,
+      double initialLng, double finalLat, double finalLng) async {
+    String directionUrl =
+        "https://maps.googleapis.com/maps/api/directions/json?origin=$initialLat,$initialLng&destination=$finalLat,$finalLng&mode=driving&key=${mapKey}";
+
+    var res = await http.get(Uri.parse(directionUrl));
+
+    if (res.statusCode == 200) {
+      // Decode the JSON response
+      var decodedJson = jsonDecode(res.body);
+
+      // Get the travel time and return it
+      String travelTime =
+          decodedJson["routes"][0]["legs"][0]["duration"]["text"];
+      return travelTime;
+    } else {
+      // If the response code is not 200, return an empty string
+      return "";
+    }
   }
 }

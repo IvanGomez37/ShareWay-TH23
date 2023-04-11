@@ -41,7 +41,7 @@ class Car {
     this.disponibility = parsedJson['Disponibilidad'];
     this.imagePath = parsedJson['Imagen'];
     AssistantMethods.searchAdressForLatLng(carLatitude!, carLongitude!)
-        .then((value) async {
+        .then((value) {
       this.carAddress = value;
     });
   }

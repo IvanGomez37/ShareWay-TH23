@@ -5,11 +5,11 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 import 'package:users_app/assistants/assistant_methods.dart';
 import 'package:users_app/global/global.dart';
+import 'package:users_app/widgets/custom_marker.dart';
 
 import '../assistants/request_cars_info.dart';
 import '../mainScreens/car_details.dart';
 import '../models/car_info.dart';
-import '../widgets/custom_car_card.dart';
 import '../widgets/custom_user_drawer.dart';
 import '../widgets/my_drawer.dart';
 
@@ -245,16 +245,28 @@ class _HomeTabPageState extends State<HomeTabPage>
   void initState() {
     helper = HttpHelper();
     initializeCars();
+    Future.delayed(Duration(seconds: 3), () => initializeMarkers());
+    super.initState();
     checkIfPermisionAllowed();
   }
 
   Future initializeCars() async {
     var cars = await helper!.getUpcomingCars();
-    await Future.delayed(Duration(seconds: 3), () async {
-      setState(() {
-        carCount = cars?.length;
-        this.cars = cars;
-      });
+    setState(() {
+      carCount = cars?.length;
+      this.cars = cars;
+    });
+  }
+
+  Set<Marker> marks = {};
+  initializeMarkers() async {
+    for (var c = 0; c < cars!.length; c++) {
+      marks.add(Marker(
+          markerId: MarkerId(cars![c].id.toString()),
+          position: LatLng(cars![c].carLatitude, cars![c].carLongitude)));
+    }
+    setState(() {
+      print(marks);
     });
   }
 
@@ -271,11 +283,7 @@ class _HomeTabPageState extends State<HomeTabPage>
         children: [
           //MAPA COMPLETO
           GoogleMap(
-            /* markers: {
-              Marker(
-                  markerId: const MarkerId("user"),
-                  position: _initialPosition.target)
-            },*/
+            markers: marks,
             initialCameraPosition: _initialPosition,
             mapType: MapType.normal,
             myLocationEnabled: true,
@@ -336,7 +344,7 @@ class _HomeTabPageState extends State<HomeTabPage>
                               child: ListTile(
                                 title: Text(cars![position].model),
                                 subtitle: Text(
-                                    'Año: ${cars![position].year.toString()}\nCapacidad: ${cars![position].capacity.toString()} personas \nUbicación: ${cars![position].carAddress.toString()}'),
+                                    'Año: ${cars![position].year.toString()}\nCapacidad: ${cars![position].capacity.toString()} personas'),
                                 leading: Container(
                                   height: 60,
                                   width: 80,
@@ -358,7 +366,6 @@ class _HomeTabPageState extends State<HomeTabPage>
         ],
       ),
       //FLOATING ACTION BUTTON QUE NOS LOCALIZA
-      floatingActionButtonLocation: FloatingActionButtonLocation.startFloat,
     );
   }
 }
