@@ -20,6 +20,6 @@ admin.site.register(EventosSeguimiento)
 admin.site.register(ClavesAcceso)
 admin.site.register(Image)
 
-admin.site.site_header = "Car Sharing"
-admin.site.site_title = "Car Sharing"
-admin.site.index_title = "Welcome Car Sharing Portal"
+admin.site.site_header = "Car Sharing (ShareWay)"
+admin.site.site_title = "ShareWay-Car Sharing"
+admin.site.index_title = "Welcome to ShareWay Car Sharing Portal"
