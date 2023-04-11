@@ -146,7 +146,7 @@ class TipoIncidencia(models.Model):
     Icon = models.CharField(max_length=45, null=True)
     Status = models.BooleanField(default=False)
     def __str__(self):
-        return "{}".format(self.Nombre)
+        return "{},{}".format(self.Nombre,self.Status)
 
 class Incidencia(models.Model):
     Fecha = models.DateTimeField()
@@ -160,6 +160,9 @@ class Incidencia(models.Model):
     Status = models.BooleanField(default=False)
     Revisada = models.BooleanField(default=False)
 
+    def __str__(self):
+        return "{},{}".format(self.Descripcion,self.Status)
+    
 
 class Comentarios(models.Model):
     Fecha = models.DateTimeField()
@@ -171,6 +174,8 @@ class Comentarios(models.Model):
     Icon = models.CharField(max_length=45, null=True)
     Status = models.BooleanField(default=False)
 
+    def __str__(self):
+        return "{},{},{}".format(self.Fecha,self.Valoracion,self.Coche)
 
 class Accesorio(models.Model):
     Nombre = models.CharField(max_length=45)
@@ -179,13 +184,16 @@ class Accesorio(models.Model):
     Icon = models.CharField(max_length=45, null=True)
     Status = models.BooleanField(default=False)
 
-
+    def __str__(self):
+        return "{}".format(self.Nombre)
+    
 class AccesoriosCoche(models.Model):
     Coche = models.ForeignKey(Coche, on_delete=models.CASCADE,related_name='accesorios_coche', null=True)
     Accesorio = models.ForeignKey(
         Accesorio, on_delete=models.CASCADE, null=True)
     Status = models.BooleanField(default=True)
-
+    def __str__(self):
+        return "{},{}".format(self.Coche,self.Accesorio)
 
 class HistorialMantenimiento(models.Model):
     Fecha = models.DateTimeField()
@@ -199,6 +207,8 @@ class HistorialMantenimiento(models.Model):
     Coche = models.ForeignKey(Coche, on_delete=models.CASCADE)
     Status = models.BooleanField(default=False)
 
+    def __str__(self):
+        return "{}".format(self.Detalles)
 
 class EventosSeguimiento(models.Model):
     Fecha = models.DateTimeField()
@@ -214,6 +224,8 @@ class EventosSeguimiento(models.Model):
         Reservacion, on_delete=models.CASCADE, null=True)
     Status = models.BooleanField(default=False)
 
+    def __str__(self):
+        return "{},{}".format(self.Fecha,self.Ubicacion)
 
 class ClavesAcceso(models.Model):
     Token = models.CharField(
@@ -222,3 +234,6 @@ class ClavesAcceso(models.Model):
     Fecha = models.DateTimeField()
     FechaVencimiento = models.DateTimeField()
     Coche = models.ForeignKey(Coche, on_delete=models.CASCADE, null=True)
+
+    def __str__(self):
+        return "{}".format(self.Token)
