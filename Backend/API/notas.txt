@@ -1,0 +1,5 @@
+export PATH="$PATH:`pwd`/flutter/bin"
+flutter run --release -d web-server --web-hostname=0.0.0.0 --web-port=3000
+export PATH="$PATH":"$HOME/.pub-cache/bin"
+flutter clean && flutter pub get
+pkill -9 python/flutter
