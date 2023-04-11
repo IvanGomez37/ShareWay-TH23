@@ -8,6 +8,7 @@ router.register(r'perfil', views.UsuarioViewSet)
 router.register(r'pago', views.PagoViewSet)
 router.register(r'comentario', views.ComentarioViewSet)
 router.register(r'reservacion', views.ReservacionViewSet)
+router.register(r'incidencia', views.IncidenciaViewSet)
 
 
 urlpatterns = [

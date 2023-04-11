@@ -36,12 +36,26 @@ class ComentariosSerializer(serializers.ModelSerializer):
             'Status']
         model = Comentarios
 
+class AccesorioSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Accesorio
+        fields = '__all__'
+
+
+class AccesoriosCocheSerializer(serializers.ModelSerializer):
+    Accesorio = AccesorioSerializer(many=False)
+
+    class Meta:
+        model = AccesoriosCoche
+        fields = '__all__'
+
 
 class CocheDetailSerializer(serializers.ModelSerializer):
     update = serializers.SerializerMethodField()
     delete = serializers.SerializerMethodField()
     coche_images = ImageSerializer(many=True, required=False)
     coche_comentarios = ComentariosSerializer(many=True, required=False)
+    accesorios_coche = AccesoriosCocheSerializer(many=True)
 
     class Meta:
         model = Coche
@@ -69,7 +83,8 @@ class CocheDetailSerializer(serializers.ModelSerializer):
             'coche_images',
             'update',
             'delete',
-            'coche_comentarios'
+            'coche_comentarios',
+            'accesorios_coche'
         ]
 
     def get_update(self, obj):
@@ -203,25 +218,15 @@ class DetallesReservacionSerializer(serializers.ModelSerializer):
 
 ######
 
-class TipoIncidenciaListSerializer(serializers.ModelSerializer):
+class TipoIncidenciaSerializer(serializers.ModelSerializer):
     class Meta:
         model = TipoIncidencia
         fields = '__all__'
 
 
-class TipoIncidenciaDetailSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = TipoIncidencia
-        fields = '__all__'
 
 
-class IncidenciaListSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Incidencia
-        fields = '__all__'
-
-
-class IncidenciaDetailSerializer(serializers.ModelSerializer):
+class IncidenciaSerializer(serializers.ModelSerializer):
     class Meta:
         model = Incidencia
         fields = '__all__'
@@ -233,22 +238,8 @@ class ComentariosCreateSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-class AccesorioListSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Accesorio
-        fields = '__all__'
 
 
-class AccesorioDetailSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Accesorio
-        fields = '__all__'
-
-
-class AccesoriosCocheSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = AccesoriosCoche
-        fields = '__all__'
 
 
 class HistorialMantenimientoSerializer(serializers.ModelSerializer):
@@ -267,3 +258,6 @@ class ClavesAccesoSerializer(serializers.ModelSerializer):
     class Meta:
         model = ClavesAcceso
         fields = '__all__'
+
+
+

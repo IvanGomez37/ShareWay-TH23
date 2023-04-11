@@ -157,3 +157,15 @@ class ComentarioViewSet(viewsets.ModelViewSet):
     serializer_class = ComentariosSerializer
 
 
+#
+# Incidencia
+#
+
+class IncidenciaViewSet(viewsets.ModelViewSet):
+    parser_classes = [MultiPartParser]
+    queryset = Incidencia.objects.all()
+    serializer_class = IncidenciaSerializer
+
+#
+#Accesorios
+#
