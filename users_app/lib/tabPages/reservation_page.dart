@@ -1,55 +1,121 @@
 import 'dart:async';
-import 'package:geolocator/geolocator.dart';
+
 import 'package:flutter/material.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:sliding_up_panel/sliding_up_panel.dart';
-import 'package:users_app/assistants/assistant_methods.dart';
-import 'package:users_app/global/global.dart';
-import 'package:users_app/tabPages/reservation_page.dart';
-
-import '../assistants/request_cars_info.dart';
-import '../mainScreens/car_details.dart';
+import '../assistants/assistant_methods.dart';
 import '../models/car_info.dart';
-import '../widgets/custom_user_drawer.dart';
-import '../widgets/my_drawer.dart';
 
-class HomeTabPage extends StatefulWidget {
-  HomeTabPage({Key? key}) : super(key: key);
+class ReservationPage extends StatefulWidget {
+  Car car;
+  ReservationPage({Key? key, required this.car}) : super(key: key);
 
   @override
-  State<HomeTabPage> createState() => _HomeTabPageState();
+  State<ReservationPage> createState() => _ReservationPage();
 }
 
-class _HomeTabPageState extends State<HomeTabPage>
-//se usa el automatic keep alive para que cada vez que se entre al tab no tenga que cargarlo todo desde cero
-    with
-        AutomaticKeepAliveClientMixin {
-  GlobalKey<ScaffoldState> sKey = GlobalKey<ScaffoldState>();
-  /*En Flutter, un Completer es un objeto que se utiliza para trabajar con operaciones 
-      asincrónicas que requieren la capacidad de completarse o cancelarse de forma externa. 
-      Básicamente, un Completer es una manera de exponer una tarea asincrónica para que alguien 
-      externo pueda interactuar con ella, incluso si no tiene acceso directo al proceso que se está ejecutando. */
+class _ReservationPage extends State<ReservationPage> {
   final Completer<GoogleMapController> _controllerGoogleMap =
       Completer<GoogleMapController>();
-  //el camera position es la localización inicial de la aplicación
-  final CameraPosition _initialPosition =
-      const CameraPosition(target: LatLng(0, 0), zoom: 18);
-  Position? userCurrentPosition;
-  var geoLocator = Geolocator();
-  double searchForACarHeight = 220;
-  //El google map controller se utiliza para controlar el estado del mapa mientras se ejecuta la aplicación
   GoogleMapController? newGoogleMapController;
-  //Location es un objeto de tipo location utilizado para obtener la localización en tiempo real del usuario
-  //Location location = Location();
-  //este es solo un atributo del keep alive
-  bool get wantKeepAlive => true;
-  LocationPermission? _locationPermision;
+  Position? userCurrentPosition;
 
-  checkIfPermisionAllowed() async {
-    _locationPermision = await Geolocator.requestPermission();
-    if (_locationPermision == LocationPermission.denied) {
-      _locationPermision = await Geolocator.requestPermission();
-    }
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      key: widget.key,
+      body: Stack(
+        children: [
+          //Mapa
+          GoogleMap(
+            initialCameraPosition: CameraPosition(
+                target:
+                    LatLng(widget.car.carLatitude!, widget.car.carLongitude!)),
+            mapType: MapType.normal,
+            myLocationEnabled: true,
+            zoomGesturesEnabled: true,
+            myLocationButtonEnabled: false,
+            zoomControlsEnabled: false,
+            buildingsEnabled: true,
+            minMaxZoomPreference: MinMaxZoomPreference(10, 19),
+            onMapCreated: (GoogleMapController controller) {
+              _controllerGoogleMap.complete(controller);
+              newGoogleMapController = controller;
+
+              blackThemeMap();
+              locateUserPosition();
+            },
+          ),
+          Positioned(
+            bottom: 0,
+            left: 0,
+            right: 0,
+            child: AnimatedSize(
+              curve: Curves.easeIn,
+              duration: const Duration(milliseconds: 120),
+              child: Container(
+                height: 300,
+                decoration: const BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(18),
+                      topRight: (Radius.circular(18))),
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Container(
+                        height: 60,
+                        child: Row(
+                          children: [
+                            Image.network(widget.car.imagePath!,
+                                fit: BoxFit.fill),
+                            Text(
+                              "${widget.car.model}\n",
+                              style: TextStyle(
+                                  fontSize: 20, fontWeight: FontWeight.bold),
+                            ),
+                          ],
+                        ),
+                      ),
+                      SizedBox(
+                        height: 10.0,
+                      ),
+                      Container(
+                        margin: EdgeInsets.all(10),
+                        child:  Text("- Año: ${widget.car.year}\n- Capacidad: ${widget.car.capacity}\n- Direccion: ${widget.car.carAddress}", style: TextStyle(fontSize: 20),),
+                        
+                        //child: Text("Año: ${widget.car.year}\n Capacidad: ${widget.car.capacity}\n Direccion: ${widget.car.carAddress}"),
+                      ),
+                      SizedBox(
+                        height: 10.0,
+                      ),
+                    ]),
+                    ElevatedButton(onPressed: () {}, child: Text("Confirmar"))
+                  ],
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
+      floatingActionButton: FloatingActionButton(
+        child: Icon(
+          Icons.arrow_back,
+        ),
+        onPressed: () {
+          Navigator.pop(context);
+        },
+        mini: true,
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.startTop,
+    );
   }
 
   locateUserPosition() async {
@@ -68,12 +134,6 @@ class _HomeTabPageState extends State<HomeTabPage>
     //quitar el print despues
     print("This is your adress: " + userReadableAdress);
   }
-
-  //Lista de coches
-  HttpHelper? helper;
-
-  int? carCount;
-  List? cars;
 
   blackThemeMap() {
     newGoogleMapController!.setMapStyle('''
@@ -239,118 +299,5 @@ class _HomeTabPageState extends State<HomeTabPage>
                         }
                       ]
                   ''');
-  }
-
-  @override
-  void initState() {
-    helper = HttpHelper();
-    initializeCars();
-    Future.delayed(Duration(seconds: 3), () => initializeMarkers());
-    super.initState();
-    checkIfPermisionAllowed();
-  }
-
-  Future initializeCars() async {
-    var cars = await helper!.getUpcomingCars();
-    setState(() {
-      carCount = cars?.length;
-      this.cars = cars;
-    });
-  }
-
-  Set<Marker> marks = {};
-  initializeMarkers() async {
-    for (var c = 0; c < cars!.length; c++) {
-      marks.add(Marker(
-          markerId: MarkerId(cars![c].id.toString()),
-          position: LatLng(cars![c].carLatitude, cars![c].carLongitude)));
-    }
-    setState(() {
-      print(marks);
-    });
-  }
-
-  Car? selectedCar;
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      key: sKey,
-      drawer: MyDrawer(
-        name: userModelCurrentInfo!.name,
-        phone: userModelCurrentInfo!.phone,
-      ),
-      body: Stack(
-        children: [
-          //MAPA COMPLETO
-          GoogleMap(
-            markers: marks,
-            initialCameraPosition: _initialPosition,
-            mapType: MapType.normal,
-            myLocationEnabled: true,
-            zoomGesturesEnabled: true,
-            myLocationButtonEnabled: false,
-            zoomControlsEnabled: false,
-            buildingsEnabled: true,
-            minMaxZoomPreference: MinMaxZoomPreference(10, 19),
-            onMapCreated: (GoogleMapController controller) {
-              _controllerGoogleMap.complete(controller);
-              newGoogleMapController = controller;
-              //BLACK THEME GOOGLE MAP
-              blackThemeMap();
-              //Location
-              locateUserPosition();
-
-              //Custom Hamburguer button for drawer
-            },
-          ),
-          //Drawer
-          CustomUserDrawer(sKey: sKey),
-          //UI para selección de vehiculo
-          Positioned(
-            bottom: 0,
-            left: 0,
-            right: 0,
-            child: AnimatedSize(
-              curve: Curves.easeIn,
-              duration: const Duration(milliseconds: 120),
-              child: Container(
-                height: 300,
-                decoration: const BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(18),
-                      topRight: (Radius.circular(18))),
-                ),
-                child: ListView.builder(
-                    itemCount: (this.carCount == null) ? 0 : this.carCount,
-                    itemBuilder: (BuildContext context, int position) {
-                      return Card(
-                          color: Colors.white,
-                          elevation: 2.0,
-                          child: ListTile(
-                            title: Text(cars![position].model),
-                            subtitle: Text(
-                                'Año: ${cars![position].year.toString()}\nCapacidad: ${cars![position].capacity.toString()} personas'),
-                            leading: Container(
-                              height: 60,
-                              width: 80,
-                              child: Image.network(cars![position].imagePath,
-                                  fit: BoxFit.fill),
-                            ),
-                            onTap: () {
-                              MaterialPageRoute route = MaterialPageRoute(
-                                  builder: (_) =>
-                                      ReservationPage(car: cars![position]));
-                              Navigator.push(context, route);
-                            },
-                          ));
-                    }),
-              ),
-            ),
-          ),
-        ],
-      ),
-      //FLOATING ACTION BUTTON QUE NOS LOCALIZA
-    );
   }
 }
