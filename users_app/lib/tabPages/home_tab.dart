@@ -6,6 +6,9 @@ import 'package:sliding_up_panel/sliding_up_panel.dart';
 import 'package:users_app/assistants/assistant_methods.dart';
 import 'package:users_app/global/global.dart';
 
+import '../assistants/request_cars_info.dart';
+import '../mainScreens/car_details.dart';
+import '../models/car_info.dart';
 import '../widgets/custom_car_card.dart';
 import '../widgets/custom_user_drawer.dart';
 import '../widgets/my_drawer.dart';
@@ -41,6 +44,7 @@ class _HomeTabPageState extends State<HomeTabPage>
   //este es solo un atributo del keep alive
   bool get wantKeepAlive => true;
   LocationPermission? _locationPermision;
+
   checkIfPermisionAllowed() async {
     _locationPermision = await Geolocator.requestPermission();
     if (_locationPermision == LocationPermission.denied) {
@@ -64,6 +68,12 @@ class _HomeTabPageState extends State<HomeTabPage>
     //quitar el print despues
     print("This is your adress: " + userReadableAdress);
   }
+
+  //Lista de coches
+  HttpHelper? helper;
+
+  int? carCount;
+  List? cars;
 
   blackThemeMap() {
     newGoogleMapController!.setMapStyle('''
@@ -233,10 +243,22 @@ class _HomeTabPageState extends State<HomeTabPage>
 
   @override
   void initState() {
-    super.initState();
+    helper = HttpHelper();
+    initializeCars();
     checkIfPermisionAllowed();
   }
 
+  Future initializeCars() async {
+    var cars = await helper!.getUpcomingCars();
+    await Future.delayed(Duration(seconds: 3), () async {
+      setState(() {
+        carCount = cars?.length;
+        this.cars = cars;
+      });
+    });
+  }
+
+  Car? selectedCar;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -291,15 +313,45 @@ class _HomeTabPageState extends State<HomeTabPage>
                       topLeft: Radius.circular(18),
                       topRight: (Radius.circular(18))),
                 ),
-                child: ListView(
-                  padding: EdgeInsets.all(10),
-                  children: [
-                    CustomCarCard(imageAsset: "assets/images/versa.png"),
-                    CustomCarCard(imageAsset: "assets/images/swift.png"),
-                    CustomCarCard(imageAsset: "assets/images/sentra.png"),
-                    CustomCarCard(),
-                  ],
-                ),
+                child: selectedCar != null
+                    ? Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(selectedCar!.model.toString()),
+                          Text('Año: ' +
+                              selectedCar!.year.toString() +
+                              "\n" +
+                              " Capacidad: " +
+                              selectedCar!.capacity.toString() +
+                              " personas"),
+                          // agregar más información del coche aquí
+                        ],
+                      )
+                    : ListView.builder(
+                        itemCount: (this.carCount == null) ? 0 : this.carCount,
+                        itemBuilder: (BuildContext context, int position) {
+                          return Card(
+                              color: Colors.white,
+                              elevation: 2.0,
+                              child: ListTile(
+                                title: Text(cars![position].model),
+                                subtitle: Text(
+                                    'Año: ${cars![position].year.toString()}\nCapacidad: ${cars![position].capacity.toString()} personas \nUbicación: ${cars![position].carAddress.toString()}'),
+                                leading: Container(
+                                  height: 60,
+                                  width: 80,
+                                  child: Image.network(
+                                      cars![position].imagePath,
+                                      fit: BoxFit.fill),
+                                ),
+                                onTap: () {
+                                  MaterialPageRoute route = MaterialPageRoute(
+                                      builder: (_) =>
+                                          CarDetail(cars![position]));
+                                  Navigator.push(context, route);
+                                },
+                              ));
+                        }),
               ),
             ),
           ),

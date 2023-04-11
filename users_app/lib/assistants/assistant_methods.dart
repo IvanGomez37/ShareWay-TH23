@@ -1,6 +1,7 @@
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:users_app/assistants/request_assistant.dart';
 import 'package:users_app/global/global.dart';
@@ -42,6 +43,18 @@ class AssistantMethods {
       Provider.of<AppInfo>(context, listen: false)
           .updateUserUpdatedAddress(userUpdatedDirectionAddress);
     }
+    return humanReadableAddress;
+  }
+
+  static Future<String> searchAdressForLatLng(
+      double latitude, double longitude) async {
+    String humanReadableAddress = "";
+    String apiUrl =
+        "https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=${mapKey}";
+    var requestResponse = await RequestAssistant.receiveRequest(apiUrl);
+    humanReadableAddress = requestResponse["results"][0]["formatted_address"];
+    if (requestResponse == "Errors") {}
+    print(humanReadableAddress);
     return humanReadableAddress;
   }
 }
