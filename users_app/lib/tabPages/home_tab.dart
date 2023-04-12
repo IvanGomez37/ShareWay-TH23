@@ -5,7 +5,7 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 import 'package:users_app/assistants/assistant_methods.dart';
 import 'package:users_app/global/global.dart';
-import 'package:users_app/tabPages/reservation_page.dart';
+import 'package:users_app/mainScreens/reservation_page.dart';
 
 import '../assistants/request_cars_info.dart';
 import '../mainScreens/car_details.dart';
@@ -244,9 +244,6 @@ class _HomeTabPageState extends State<HomeTabPage>
   @override
   void initState() {
     helper = HttpHelper();
-    initializeCars();
-    Future.delayed(Duration(seconds: 3), () => initializeMarkers());
-    super.initState();
     checkIfPermisionAllowed();
   }
 
@@ -255,6 +252,7 @@ class _HomeTabPageState extends State<HomeTabPage>
     setState(() {
       carCount = cars?.length;
       this.cars = cars;
+      initializeMarkers();
     });
   }
 
@@ -299,7 +297,7 @@ class _HomeTabPageState extends State<HomeTabPage>
               blackThemeMap();
               //Location
               locateUserPosition();
-
+              initializeCars();
               //Custom Hamburguer button for drawer
             },
           ),
@@ -324,26 +322,28 @@ class _HomeTabPageState extends State<HomeTabPage>
                 child: ListView.builder(
                     itemCount: (this.carCount == null) ? 0 : this.carCount,
                     itemBuilder: (BuildContext context, int position) {
-                      return Card(
-                          color: Colors.white,
-                          elevation: 2.0,
-                          child: ListTile(
-                            title: Text(cars![position].model),
-                            subtitle: Text(
-                                'Año: ${cars![position].year.toString()}\nCapacidad: ${cars![position].capacity.toString()} personas'),
-                            leading: Container(
-                              height: 60,
-                              width: 80,
-                              child: Image.network(cars![position].imagePath,
-                                  fit: BoxFit.fill),
-                            ),
-                            onTap: () {
-                              MaterialPageRoute route = MaterialPageRoute(
-                                  builder: (_) =>
-                                      ReservationPage(car: cars![position]));
-                              Navigator.push(context, route);
-                            },
-                          ));
+                      if (cars![position].disponibility != false) {
+                        return Card(
+                            color: Colors.white,
+                            elevation: 2.0,
+                            child: ListTile(
+                              title: Text(cars![position].model),
+                              subtitle: Text(
+                                  'Año: ${cars![position].year.toString()}\nCapacidad: ${cars![position].capacity.toString()} personas'),
+                              leading: Container(
+                                height: 60,
+                                width: 80,
+                                child: Image.network(cars![position].imagePath,
+                                    fit: BoxFit.fill),
+                              ),
+                              onTap: () {
+                                MaterialPageRoute route = MaterialPageRoute(
+                                    builder: (_) =>
+                                        ReservationPage(car: cars![position]));
+                                Navigator.push(context, route);
+                              },
+                            ));
+                      }
                     }),
               ),
             ),

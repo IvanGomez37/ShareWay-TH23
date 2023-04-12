@@ -46,6 +46,7 @@ dependencies:
   sliding_up_panel: ^2.0.0+1
   http: ^0.13.5
   provider: ^6.0.5
+  polyline: ^1.0.2
 dev_dependencies:
   flutter_test:
     sdk: flutter

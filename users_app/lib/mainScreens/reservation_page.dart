@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:users_app/mainScreens/payment_screen.dart';
 import '../assistants/assistant_methods.dart';
 import '../models/car_info.dart';
 
@@ -19,7 +20,6 @@ class _ReservationPage extends State<ReservationPage> {
       Completer<GoogleMapController>();
   GoogleMapController? newGoogleMapController;
   Position? userCurrentPosition;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,6 +31,12 @@ class _ReservationPage extends State<ReservationPage> {
             initialCameraPosition: CameraPosition(
                 target:
                     LatLng(widget.car.carLatitude!, widget.car.carLongitude!)),
+            markers: {
+              Marker(
+                  markerId: MarkerId(widget.car.id.toString()),
+                  position:
+                      LatLng(widget.car.carLatitude!, widget.car.carLongitude!))
+            },
             mapType: MapType.normal,
             myLocationEnabled: true,
             zoomGesturesEnabled: true,
@@ -65,39 +71,50 @@ class _ReservationPage extends State<ReservationPage> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      SizedBox(
-                        height: 10,
-                      ),
-                      Container(
-                        height: 60,
-                        child: Row(
-                          children: [
-                            Image.network(widget.car.imagePath!,
-                                fit: BoxFit.fill),
-                            Text(
-                              "${widget.car.model}\n",
-                              style: TextStyle(
-                                  fontSize: 20, fontWeight: FontWeight.bold),
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Container(
+                            height: 60,
+                            child: Row(
+                              children: [
+                                Image.network(widget.car.imagePath!,
+                                    fit: BoxFit.fill),
+                                Text(
+                                  "${widget.car.model}\n",
+                                  style: TextStyle(
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              ],
                             ),
-                          ],
-                        ),
-                      ),
-                      SizedBox(
-                        height: 10.0,
-                      ),
-                      Container(
-                        margin: EdgeInsets.all(10),
-                        child:  Text("- Año: ${widget.car.year}\n- Capacidad: ${widget.car.capacity}\n- Direccion: ${widget.car.carAddress}", style: TextStyle(fontSize: 20),),
-                        
-                        //child: Text("Año: ${widget.car.year}\n Capacidad: ${widget.car.capacity}\n Direccion: ${widget.car.carAddress}"),
-                      ),
-                      SizedBox(
-                        height: 10.0,
-                      ),
-                    ]),
-                    ElevatedButton(onPressed: () {}, child: Text("Confirmar"))
+                          ),
+                          SizedBox(
+                            height: 10.0,
+                          ),
+                          Container(
+                            margin: EdgeInsets.all(10),
+                            child: Text(
+                              "- Año: ${widget.car.year}\n- Capacidad: ${widget.car.capacity}\n- Direccion: ${widget.car.carAddress}",
+                              style: TextStyle(fontSize: 20),
+                            ),
+
+                            //child: Text("Año: ${widget.car.year}\n Capacidad: ${widget.car.capacity}\n Direccion: ${widget.car.carAddress}"),
+                          ),
+                          SizedBox(
+                            height: 10.0,
+                          ),
+                        ]),
+                    ElevatedButton(
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (builder) => PaymentMethodScreen()));
+                        },
+                        child: Text("Confirmar"))
                   ],
                 ),
               ),
