@@ -36,6 +36,7 @@ class _ReservationPage extends State<ReservationPage> {
   _getRoute() async {
     // Get directions
     final directions = await DirectionsRepository().getDirections(
+        mode: 'walking',
         origin: LatLng(
             _userCurrentPosition!.latitude, _userCurrentPosition!.longitude),
         destination: LatLng(widget.car.carLatitude, widget.car.carLongitude));
@@ -88,9 +89,9 @@ class _ReservationPage extends State<ReservationPage> {
               _newGoogleMapController = controller;
 
               await locateUserPosition();
+              blackThemeMap();
               _getRoute();
               _centerView();
-              blackThemeMap();
             },
           ),
           Positioned(

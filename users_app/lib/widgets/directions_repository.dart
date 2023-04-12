@@ -15,13 +15,14 @@ class DirectionsRepository {
   Future<DirectionsRoad> getDirections({
     required LatLng origin,
     required LatLng destination,
+    required String mode,
   }) async {
     final response = await _dio.get(
       _baseUrl,
       queryParameters: {
         'origin': '${origin.latitude},${origin.longitude}',
         'destination': '${destination.latitude},${destination.longitude}',
-        'mode': 'walking',
+        'mode': mode,
         'key': mapKey,
       },
     );

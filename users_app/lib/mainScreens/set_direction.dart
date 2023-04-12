@@ -3,6 +3,7 @@ import 'package:flutter/gestures.dart';
 import 'dart:ui';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:users_app/mainScreens/payment_screen.dart';
+import 'package:users_app/mainScreens/reservation_resume.dart';
 import '../utils.dart';
 
 class SelectDestination extends StatelessWidget {
@@ -115,7 +116,7 @@ class SelectDestination extends StatelessWidget {
                       onTap: () => Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (builder) => PaymentMethodScreen())),
+                              builder: (builder) => ReservationResume())),
                       child: Container(
                         // autogroupqmesbhD (KWAPX3cMVmKq3CD3pVQmEs)
                         width: double.infinity,

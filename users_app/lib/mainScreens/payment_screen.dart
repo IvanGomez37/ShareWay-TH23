@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:users_app/mainScreens/driving_open_car_advice.dart';
+import 'package:users_app/mainScreens/walking_to_car.dart';
 
 import '../utils.dart';
 
 class PaymentMethodScreen extends StatelessWidget {
-  const PaymentMethodScreen({Key? key}) : super(key: key);
+  PaymentMethodScreen({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     double baseWidth = 360;
@@ -28,7 +29,7 @@ class PaymentMethodScreen extends StatelessWidget {
                 margin:
                     EdgeInsets.fromLTRB(1 * fem, 0 * fem, 0 * fem, 63 * fem),
                 child: Text(
-                  'A matter of cash',
+                  'Formas de pago',
                   textAlign: TextAlign.center,
                   style: SafeGoogleFont(
                     'Montserrat',
@@ -69,27 +70,6 @@ class PaymentMethodScreen extends StatelessWidget {
                       child: Stack(
                         children: [
                           Positioned(
-                            // selectapaymentmethodGAf (34:47)
-                            left: 0 * fem,
-                            top: 0 * fem,
-                            child: Align(
-                              child: SizedBox(
-                                width: 233 * fem,
-                                height: 22 * fem,
-                                child: Text(
-                                  'select a payment method',
-                                  style: SafeGoogleFont(
-                                    'Montserrat',
-                                    fontSize: 18 * ffem,
-                                    fontWeight: FontWeight.w400,
-                                    height: 1.2175 * ffem / fem,
-                                    color: Color(0xff000000),
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                          Positioned(
                             // selectapaymentmethodj4F (34:49)
                             left: 0 * fem,
                             top: 0 * fem,
@@ -98,7 +78,7 @@ class PaymentMethodScreen extends StatelessWidget {
                                 width: 233 * fem,
                                 height: 22 * fem,
                                 child: Text(
-                                  'select a payment method',
+                                  'Selecciona el metodo de pago',
                                   style: SafeGoogleFont(
                                     'Montserrat',
                                     fontSize: 18 * ffem,
@@ -211,7 +191,7 @@ class PaymentMethodScreen extends StatelessWidget {
                       margin: EdgeInsets.fromLTRB(
                           1 * fem, 0 * fem, 0 * fem, 0 * fem),
                       child: Text(
-                        'or add a new one',
+                        'O puedes agregar uno',
                         textAlign: TextAlign.center,
                         style: SafeGoogleFont(
                           'Montserrat',
@@ -265,7 +245,7 @@ class PaymentMethodScreen extends StatelessWidget {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (builder) => DrivingOpenCarAdvice()));
+                                builder: (builder) => WalkingCar()));
                       },
                       child: Positioned(
                         // continueofh (34:65)
