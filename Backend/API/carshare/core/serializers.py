@@ -261,3 +261,27 @@ class ClavesAccesoSerializer(serializers.ModelSerializer):
 
 
 
+#sistemas de recompenas
+
+class RetoSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Reto
+        fields = '__all__'
+
+
+
+class RetoUsuarioSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = RetoUsuario
+        fields = '__all__'
+
+        
+class RecompensaSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Recompensa
+        fields = '__all__'
+
+class RecompensasUsuarioSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = RecompensasUsuario
+        fields = '__all__'
