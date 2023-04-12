@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:users_app/mainScreens/payment_screen.dart';
+import 'package:users_app/mainScreens/set_direction.dart';
 import '../assistants/assistant_methods.dart';
 import '../models/car_info.dart';
 
@@ -112,7 +113,7 @@ class _ReservationPage extends State<ReservationPage> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (builder) => PaymentMethodScreen()));
+                                  builder: (builder) => SelectDestination()));
                         },
                         child: Text("Confirmar"))
                   ],
