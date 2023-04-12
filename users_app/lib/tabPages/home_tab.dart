@@ -274,8 +274,8 @@ class _HomeTabPageState extends State<HomeTabPage>
     return Scaffold(
       key: sKey,
       drawer: MyDrawer(
-        name: userModelCurrentInfo!.name,
-        phone: userModelCurrentInfo!.phone,
+        name: userModelCurrentInfo?.name,
+        phone: userModelCurrentInfo?.phone,
       ),
       body: Stack(
         children: [
