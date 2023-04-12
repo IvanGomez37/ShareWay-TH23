@@ -19,6 +19,14 @@ admin.site.register(HistorialMantenimiento)
 admin.site.register(EventosSeguimiento)
 admin.site.register(ClavesAcceso)
 admin.site.register(Image)
+#
+#Recompensas
+#
+admin.site.register(Reto)
+admin.site.register(RetoUsuario)
+admin.site.register(Recompensa)
+admin.site.register(RecompensasUsuario)
+
 
 admin.site.site_header = "Car Sharing (ShareWay)"
 admin.site.site_title = "ShareWay-Car Sharing"

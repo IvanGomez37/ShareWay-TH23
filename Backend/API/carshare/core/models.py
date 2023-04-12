@@ -86,10 +86,13 @@ class Usuario(models.Model):
     Pais = models.CharField(max_length=200, null=True)
     Telefono = models.CharField(max_length=45, null=True)
     Edad = models.IntegerField(null=True)
+    TotalViajes = models.IntegerField(null=True)
+    TotalKilometros=models.DecimalField(max_digits=20, decimal_places=10,null=True)
     ImagenLicencia = models.ImageField(upload_to='Licencias', null=True)
     Imagen = models.ImageField(upload_to='Usuario', null=True)
     VigenciaLicencia = models.DateField(null=True)
     Status = models.BooleanField(default=True)
+    PuntosUsuario=models.IntegerField(null=True)
     def __str__(self):
         return "{},{},{}".format(self.Nombre,self.userprofile,self.Correo)
 
@@ -237,3 +240,50 @@ class ClavesAcceso(models.Model):
 
     def __str__(self):
         return "{}".format(self.Token)
+
+
+#sistema de recompensas
+
+class Reto(models.Model):
+    Nombre = models.CharField(max_length=45)
+    Descripcion = models.TextField()
+    Imagen = models.ImageField(upload_to='Accesorio')
+    Icon = models.CharField(max_length=45, null=True)
+    Puntos=models.IntegerField()
+    Status = models.BooleanField(default=False)
+
+    def __str__(self):
+        return "{}".format(self.Nombre)
+    
+class RetoUsuario(models.Model):
+    Reto = models.ForeignKey(Reto, on_delete=models.CASCADE,related_name='retos_usuario', null=True)
+    Usuario = models.ForeignKey(
+        User, on_delete=models.CASCADE, null=True)
+    Status = models.BooleanField(default=True)
+    Fecha = models.DateTimeField()
+    def __str__(self):
+        return "{},{}".format(self.Reto,self.Usuario)
+
+
+
+class Recompensa(models.Model):
+    Nombre = models.CharField(max_length=45)
+    Descripcion = models.TextField()
+    Imagen = models.ImageField(upload_to='Recompensas')
+    Icon = models.CharField(max_length=45, null=True)
+    PuntosRequeridos=models.IntegerField()
+    Status = models.BooleanField(default=False)
+
+    def __str__(self):
+        return "{}".format(self.Nombre)
+
+
+class RecompensasUsuario(models.Model):
+    Recompensa = models.ForeignKey(Recompensa, on_delete=models.CASCADE,related_name='recompensa_usuario', null=True)
+    Usuario = models.ForeignKey(
+        User, on_delete=models.CASCADE, null=True) 
+    Fecha = models.DateTimeField()
+    FechaVencimiento = models.DateTimeField()
+    Status = models.BooleanField(default=True)
+    def __str__(self):
+        return "{},{}".format(self.Reto,self.Usuario)
