@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:users_app/tabPages/reward_complete_challenge.dart';
 
 import '../rewardsPages/tester_option_page.dart';
 import '../utils.dart';
@@ -399,7 +400,8 @@ class _RewardsTabPageState extends State<RewardsTabPage>
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (builder) => TesterOptionPage()));
+                                  builder: (builder) =>
+                                      RewardCompleteChallengePage()));
                         },
                         child: Container(
                           // autogroup88qrtCK (CER3AYfhhVer365zes88qR)
