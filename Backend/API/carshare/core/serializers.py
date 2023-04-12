@@ -152,40 +152,16 @@ class UserProfileSerializer(serializers.ModelSerializer):
 
 
 class UserSerializer(serializers.ModelSerializer):
-    userprofile = UserProfileSerializer(
-        many=False, required=False, source='Usuario')
-
-    def update(self, instance, validated_data):
-        if (not instance.username == self.context['request'].user.username):
-            raise exceptions.PermissionDenied(
-                'You do not have permission to update')
-        profile_data = validated_data.pop('userprofile')
-        if (not hasattr(instance, 'userprofile')):
-            instance.userprofile = Usuario.objects.create(
-                UsuarioFK=instance, **profile_data)
-        else:
-            instance.userprofile.Nombre = profile_data["Nombre"]
-            instance.userprofile.Descripcion = profile_data["Descripcion"]
-            instance.userprofile.save()
-        instance.first_name = validated_data.get(
-            'first_name', instance.first_name)
-        instance.last_name = validated_data.get(
-            'last_name', instance.last_name)
-        instance.email = validated_data.get('email', instance.email)
-        instance.save()
-        return instance
+   
 
     class Meta:
         model = User
         fields = [
             "username",
             "first_name",
-            "last_name",
             'email',
-            'userprofile'
         ]
-        # read_only_fields = ('userprofile',)
-
+ 
 
 class ReservacionSerializer(serializers.ModelSerializer):
     lookup_field = "Usuario"
@@ -216,6 +192,11 @@ class DetallesReservacionSerializer(serializers.ModelSerializer):
 
 
 
+class IdSerializer(serializers.ModelSerializer):
+    id = serializers.PrimaryKeyRelatedField(source='pk', read_only=True)
+    class Meta:
+        model = User
+        fields = ('id',)
 ######
 
 class TipoIncidenciaSerializer(serializers.ModelSerializer):
@@ -271,17 +252,33 @@ class RetoSerializer(serializers.ModelSerializer):
 
 
 class RetoUsuarioSerializer(serializers.ModelSerializer):
+    Reto = RetoSerializer(many=False)
+    class Meta:
+        model = RetoUsuario
+        fields = ['id', 'Reto', 'Status', 'Fecha']
+
+class RetoUsuarioCreateSerializer(serializers.ModelSerializer):
     class Meta:
         model = RetoUsuario
         fields = '__all__'
 
-        
+
+
 class RecompensaSerializer(serializers.ModelSerializer):
     class Meta:
         model = Recompensa
         fields = '__all__'
 
+
 class RecompensasUsuarioSerializer(serializers.ModelSerializer):
+    Recompensa = RecompensaSerializer(many=False)
+    class Meta:
+        model = RecompensasUsuario
+        fields = ['id', 'Recompensa', 'Fecha', 'FechaVencimiento', 'Status']
+
+
+
+class RecompensasUsuarioCreateSerializer(serializers.ModelSerializer):
     class Meta:
         model = RecompensasUsuario
         fields = '__all__'

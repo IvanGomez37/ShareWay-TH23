@@ -286,4 +286,4 @@ class RecompensasUsuario(models.Model):
     FechaVencimiento = models.DateTimeField()
     Status = models.BooleanField(default=True)
     def __str__(self):
-        return "{},{}".format(self.Reto,self.Usuario)
+        return "{},{}".format(self.Recompensa,self.Usuario)

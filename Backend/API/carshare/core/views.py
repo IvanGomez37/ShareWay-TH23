@@ -19,6 +19,19 @@ def get_csrf_token(request):
     return JsonResponse({'csrf_token': request.COOKIES['csrftoken']})
 
 #
+#id
+#
+class IdView(APIView):
+    serializer_class = IdSerializer
+
+    def get(self, request, username):
+        try:
+            user = User.objects.get(username=username)
+            serializer = self.serializer_class(user)
+            return Response(serializer.data)
+        except User.DoesNotExist:
+            return Response({'error': 'User not found'})
+#
 # Coche
 #
 
@@ -166,6 +179,40 @@ class IncidenciaViewSet(viewsets.ModelViewSet):
     queryset = Incidencia.objects.all()
     serializer_class = IncidenciaSerializer
 
+
+
 #
-#Accesorios
+#SISTEMA DE RECOMENDACIONES
 #
+from rest_framework.views import APIView
+from rest_framework.response import Response
+
+class RetosCumplidos(APIView):
+    def get(self, request, usuario_id):
+        retos_cumplidos = RetoUsuario.objects.filter(Usuario=usuario_id)
+        serializer = RetoUsuarioSerializer(retos_cumplidos, many=True)
+        return Response(serializer.data)
+
+class RetosPendientes(APIView):
+    def get(self, request, usuario_id):
+        retos_cumplidos = RetoUsuario.objects.filter(Usuario=usuario_id).values_list('Reto__id', flat=True)
+        retos_pendientes = Reto.objects.exclude(id__in=retos_cumplidos)
+        serializer = RetoSerializer(retos_pendientes, many=True)
+        return Response(serializer.data)
+
+class RecompensasObtenidas(APIView):
+    def get(self, request, usuario_id):
+        recompensas_obtenidas = RecompensasUsuario.objects.filter(Usuario=usuario_id, Status=True)
+        serializer = RecompensasUsuarioSerializer(recompensas_obtenidas, many=True)
+        return Response(serializer.data)
+
+
+class RetoUsuarioViewSet(viewsets.ModelViewSet):
+    parser_classes = [MultiPartParser]
+    queryset = RetoUsuario.objects.all()
+    serializer_class = RetoUsuarioCreateSerializer
+
+class RecompensasUsuarioViewSet(viewsets.ModelViewSet):
+    parser_classes = [MultiPartParser]
+    queryset = RecompensasUsuario.objects.all()
+    serializer_class = RecompensasUsuarioCreateSerializer
