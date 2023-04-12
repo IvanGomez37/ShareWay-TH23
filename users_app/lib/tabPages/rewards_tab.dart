@@ -3,14 +3,14 @@ import 'package:flutter/material.dart';
 import '../global/global.dart';
 import '../splashScreens/splash_screen.dart';
 
-class ProfileTabPage extends StatefulWidget {
-  ProfileTabPage({Key? key}) : super(key: key);
+class RewardsTabPage extends StatefulWidget {
+  RewardsTabPage({Key? key}) : super(key: key);
 
   @override
-  State<ProfileTabPage> createState() => _ProfileTabPageState();
+  State<RewardsTabPage> createState() => _RewardsTabPageState();
 }
 
-class _ProfileTabPageState extends State<ProfileTabPage>
+class _RewardsTabPageState extends State<RewardsTabPage>
     with AutomaticKeepAliveClientMixin {
   bool get wantKeepAlive => true;
   @override

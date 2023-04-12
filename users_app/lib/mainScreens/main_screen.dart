@@ -6,7 +6,7 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:users_app/global/global.dart';
 import 'package:users_app/splashScreens/splash_screen.dart';
 import '../tabPages/home_tab.dart';
-import '../tabPages/profile_tab.dart';
+import '../tabPages/rewards_tab.dart';
 import '../tabPages/travels_tab.dart';
 
 class MainScreen extends StatefulWidget {
@@ -40,7 +40,7 @@ class _MainScreenState extends State<MainScreen>
       body: TabBarView(
         controller: tabController,
         physics: const NeverScrollableScrollPhysics(),
-        children: [HomeTabPage(), TravelsTabPage(), ProfileTabPage()],
+        children: [HomeTabPage(), TravelsTabPage(), RewardsTabPage()],
       ),
       bottomNavigationBar: BottomNavigationBar(
         items: const [
@@ -54,7 +54,7 @@ class _MainScreenState extends State<MainScreen>
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person),
-            label: "Account",
+            label: "Rewards",
           ),
         ],
         type: BottomNavigationBarType.fixed,

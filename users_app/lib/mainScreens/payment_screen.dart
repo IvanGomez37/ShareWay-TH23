@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:users_app/mainScreens/driving_open_car_advice.dart';
 
 import '../utils.dart';
 
@@ -259,23 +260,31 @@ class PaymentMethodScreen extends StatelessWidget {
                         ),
                       ),
                     ),
-                    Positioned(
-                      // continueofh (34:65)
-                      left: 50.5 * fem,
-                      top: 5 * fem,
-                      child: Align(
-                        child: SizedBox(
-                          width: 87 * fem,
-                          height: 22 * fem,
-                          child: Text(
-                            'Continue',
-                            textAlign: TextAlign.center,
-                            style: SafeGoogleFont(
-                              'Montserrat',
-                              fontSize: 18 * ffem,
-                              fontWeight: FontWeight.w700,
-                              height: 1.2175 * ffem / fem,
-                              color: Color(0xffffffff),
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (builder) => DrivingOpenCarAdvice()));
+                      },
+                      child: Positioned(
+                        // continueofh (34:65)
+                        left: 50.5 * fem,
+                        top: 5 * fem,
+                        child: Align(
+                          child: SizedBox(
+                            width: 87 * fem,
+                            height: 22 * fem,
+                            child: Text(
+                              'Continue',
+                              textAlign: TextAlign.center,
+                              style: SafeGoogleFont(
+                                'Montserrat',
+                                fontSize: 18 * ffem,
+                                fontWeight: FontWeight.w700,
+                                height: 1.2175 * ffem / fem,
+                                color: Color(0xffffffff),
+                              ),
                             ),
                           ),
                         ),
