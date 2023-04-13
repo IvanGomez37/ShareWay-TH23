@@ -10,3 +10,12 @@ System to implement car-sharing seeking to achieve a sustainable mobility spread
 
 -
 ![image](https://user-images.githubusercontent.com/75138937/231748586-b2cf910a-83a8-4e25-9b15-08d45e8d8a7a.png)
+
+Rest API
+
+Django RestfulFramework
+https://sharewayapi.azurewebsites.net/redoc/#tag/coche
+https://sharewayapi.azurewebsites.net/swagger/
+
+<a href="https://sharewayapi.azurewebsites.net/swagger/">Ir a Rest API (Swagger)</a>
+<a href="https://sharewayapi.azurewebsites.net/redoc/">Ir a Rest API (Redoc)</a>
