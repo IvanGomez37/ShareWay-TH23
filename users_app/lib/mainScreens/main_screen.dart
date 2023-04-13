@@ -5,6 +5,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:users_app/global/global.dart';
 import 'package:users_app/splashScreens/splash_screen.dart';
+import 'package:users_app/tabPages/history.dart';
 import '../tabPages/home_tab.dart';
 import '../tabPages/rewards_tab.dart';
 import '../tabPages/travels_tab.dart';
@@ -40,7 +41,7 @@ class _MainScreenState extends State<MainScreen>
       body: TabBarView(
         controller: tabController,
         physics: const NeverScrollableScrollPhysics(),
-        children: [HomeTabPage(), TravelsTabPage(), RewardsTabPage()],
+        children: [HomeTabPage(), History(), RewardsTabPage()],
       ),
       bottomNavigationBar: BottomNavigationBar(
         items: const [

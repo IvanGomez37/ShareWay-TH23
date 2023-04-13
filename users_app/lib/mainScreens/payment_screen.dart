@@ -115,18 +115,24 @@ class PaymentMethodScreen extends StatelessWidget {
                                   style: TextButton.styleFrom(
                                     padding: EdgeInsets.zero,
                                   ),
-                                  child: Container(
-                                    decoration: BoxDecoration(
-                                      borderRadius:
-                                          BorderRadius.circular(3 * fem),
-                                      color: const Color(0xffffffff),
-                                      boxShadow: [
-                                        BoxShadow(
-                                          color: const Color(0x3f000000),
-                                          offset: Offset(0 * fem, 4 * fem),
-                                          blurRadius: 2 * fem,
-                                        ),
-                                      ],
+                                  child: GestureDetector(
+                                                          onTap: () {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (builder) => Payment()));
+                      },
+                                    child: Container(
+                                      decoration: BoxDecoration(
+                                        borderRadius:
+                                            BorderRadius.circular(3 * fem),
+                                        color: const Color(0xffffffff),
+                                        boxShadow: [
+                                          BoxShadow(
+                                            color: const Color(0x3f000000),
+                                            offset: Offset(0 * fem, 4 * fem),
+                                            blurRadius: 2 * fem,
+                                          ),
+                                        ],
+                                      ),
                                     ),
                                   ),
                                 ),
@@ -151,44 +157,6 @@ class PaymentMethodScreen extends StatelessWidget {
                         ],
                       ),
                     ),
-                    /*
-                    Container(
-                      // autogrouprnpsL5y (KWAMrRigKTfxnHgawKRnps)
-                      margin: EdgeInsets.fromLTRB(
-                          0 * fem, 0 * fem, 1 * fem, 84 * fem),
-                      padding: EdgeInsets.fromLTRB(
-                          87 * fem, 1 * fem, 106 * fem, 0.45 * fem),
-                      width: 253 * fem,
-                      decoration: BoxDecoration(
-                        color: const Color(0xffffffff),
-                        borderRadius: BorderRadius.circular(3 * fem),
-                        boxShadow: [
-                          BoxShadow(
-                            color: const Color(0x3f000000),
-                            offset: Offset(0 * fem, 4 * fem),
-                            blurRadius: 2 * fem,
-                          ),
-                        ],
-                      ),
-                      child: Center(
-                        // image21jP1 (34:59)
-                        child: SizedBox(
-                          width: double.infinity,
-                          height: 31.55 * fem,
-                          child: Container(
-                            decoration: const BoxDecoration(
-                              image: DecorationImage(
-                                fit: BoxFit.cover,
-                                image: AssetImage(
-                                  'assets/idealflow/images/image-21-bg.png',
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                    */
                     Container(
                       // oraddanewonebAK (34:60)
                       margin: EdgeInsets.fromLTRB(
@@ -208,72 +176,7 @@ class PaymentMethodScreen extends StatelessWidget {
                   ],
                 ),
               ),
-              Container(
-                // group3ffy (34:63)
-                margin:
-                    EdgeInsets.fromLTRB(50 * fem, 0 * fem, 51 * fem, 0 * fem),
-                width: double.infinity,
-                height: 36 * fem,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(8 * fem),
-                ),
-                child: Stack(
-                  children: [
-                    Positioned(
-                      // rectangle6AMq (34:64)
-                      left: 0 * fem,
-                      top: 0 * fem,
-                      child: Align(
-                        child: SizedBox(
-                          width: 187 * fem,
-                          height: 36 * fem,
-                          child: Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(8 * fem),
-                              color: const Color(0xff0bd904),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: const Color(0x3f000000),
-                                  offset: Offset(0 * fem, 4 * fem),
-                                  blurRadius: 2 * fem,
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (builder) => Payment()));
-                      },
-                      child: Positioned(
-                        // continueofh (34:65)
-                        left: 50.5 * fem,
-                        top: 5 * fem,
-                        child: Align(
-                          child: SizedBox(
-                            width: 150 * fem,
-                            height: 22 * fem,
-                            child: Text(
-                              'Continuar',
-                              textAlign: TextAlign.center,
-                              style: SafeGoogleFont(
-                                'Montserrat',
-                                fontSize: 18 * ffem,
-                                fontWeight: FontWeight.w700,
-                                height: 1.2175 * ffem / fem,
-                                color: const Color(0xffffffff),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
+             
             ],
           ),
         ),
