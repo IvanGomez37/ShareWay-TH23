@@ -6,6 +6,7 @@ import 'package:sliding_up_panel/sliding_up_panel.dart';
 import 'package:users_app/assistants/assistant_methods.dart';
 import 'package:users_app/global/global.dart';
 import 'package:users_app/mainScreens/reservation_page.dart';
+import 'package:users_app/mainScreens/safeCar_confirmation.dart';
 
 import '../assistants/request_cars_info.dart';
 import '../mainScreens/car_details.dart';
@@ -350,7 +351,12 @@ class _HomeTabPageState extends State<HomeTabPage>
           ),
         ],
       ),
-      //FLOATING ACTION BUTTON QUE NOS LOCALIZA
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.shield),
+        backgroundColor: Colors.red,
+        onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (builder) => SafeCarConfirmation()))
+        ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.endTop,
     );
   }
 }
