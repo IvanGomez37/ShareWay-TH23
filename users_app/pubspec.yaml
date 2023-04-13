@@ -51,7 +51,7 @@ dependencies:
   polyline: ^1.0.2
   google_fonts: ^4.0.3
   url_launcher: ^6.1.10
-
+  flutter_paypal: ^0.0.8
 dev_dependencies:
   flutter_test:
     sdk: flutter
