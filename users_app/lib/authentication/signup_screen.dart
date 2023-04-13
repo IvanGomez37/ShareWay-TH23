@@ -69,35 +69,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
       driversRef.child(firebaseUser.uid).set(userMap);
 
       currentFirebaseUser = firebaseUser;
-      //API
-      List l = await Future.wait([
-      http.post(
-          Uri.parse("https://sharewayapi.azurewebsites.net/api/users/"),
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: jsonEncode({
-            "username":FirebaseAuth.instance.currentUser!.uid,
-            "first_name": nameTextEditingController.text.trim(),
-            "email": emailTextEditingController.text.trim(),
-          }))
-    ]);
-
-  var url = Uri.parse('https://emilioenlaluna-solid-orbit-qxqrwgv9rvwfp96-8000.preview.app.github.dev/api/ID/'+FirebaseAuth.instance.currentUser!.uid+'/');
-  var response = await http.get(url);
-
-  if (response.statusCode == 200) {
-    // Si la solicitud fue exitosa, convierte la respuesta JSON a un objeto Dart
-    var data = jsonDecode(response.body);
-
-    // Guarda la información en una variable global
-    // Supongamos que la variable global se llama "globalData"
-    usuarioApiData?.id = data;
-
-  } else {
-    // Si la solicitud falla, maneja el error adecuadamente
-    throw Exception('Error al cargar los datos de la API');
-  }
+      
 
       //
       Fluttertoast.showToast(msg: "Account has been Created.");

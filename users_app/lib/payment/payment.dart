@@ -143,28 +143,15 @@ class _PaymentState extends State<Payment> {
                           note: "Contactanos para mas informacion.",
                           onSuccess: (Map params) async {
                             print("onSuccess: $params");
-                            Navigator.of(context).push(
-                              MaterialPageRoute(
-                                builder: (BuildContext context) => WalkingCar(),
-                              ),
-                            );
+                            
                           },
                           onError: (error) {
                             print("onError: $error");
-                            Navigator.of(context).push(
-                              MaterialPageRoute(
-                                builder: (BuildContext context) => WalkingCar(),
-                              ),
-                            );
+                            
                           },
                           onCancel: (params) {
                             print('cancelled: $params');
-                            Navigator.of(context).push(
-                              MaterialPageRoute(
-                                builder: (BuildContext context) =>
-                                    WalkingScreen(),
-                              ),
-                            );
+                            
                           }),
                     ),
                   )
@@ -205,6 +192,26 @@ class _PaymentState extends State<Payment> {
                 style: ElevatedButton.styleFrom(
                   padding: EdgeInsets.all(10),
                   backgroundColor: Colors.red.shade700,
+                  ),
+              ),
+              ElevatedButton(
+                onPressed: () => {
+                  Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context)=>WalkingCar()))
+                },
+                child: Text(
+                  'Continuar',
+                  textAlign: TextAlign.center,
+                  style: SafeGoogleFont(
+                    'Montserrat',
+                    fontSize: 25 * ffem,
+                    fontWeight: FontWeight.w800,
+                    height: 1.2175 * ffem / fem,
+                    color: Color(0xffffffff),
+                  ),
+                ),
+                style: ElevatedButton.styleFrom(
+                  padding: EdgeInsets.all(10),
+                  backgroundColor: Color.fromARGB(255, 87, 228, 21),
                   ),
               ),
             ],
