@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
 import 'dart:ui';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:users_app/mainScreens/driving_route.dart';
 
 import '../utils.dart';
 
@@ -67,55 +68,27 @@ class DrivingStartEngine extends StatelessWidget {
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(8 * fem),
                     ),
-                    child: Stack(
-                      children: [
-                        Positioned(
-                          // rectangle6mJ3 (36:150)
-                          left: 0 * fem,
-                          top: 0 * fem,
-                          child: Align(
-                            child: SizedBox(
-                              width: 187 * fem,
-                              height: 36 * fem,
-                              child: Container(
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(8 * fem),
-                                  color: Color(0xff0bd904),
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: Color(0x3f000000),
-                                      offset: Offset(0 * fem, 4 * fem),
-                                      blurRadius: 2 * fem,
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ),
+                    child: ElevatedButton(
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (builder) => DrivingRoute()));
+                      },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Color(0xff0bd904),
+                      ),
+                      child: Text(
+                        'Start',
+                        textAlign: TextAlign.center,
+                        style: SafeGoogleFont(
+                          'Montserrat',
+                          fontSize: 18 * ffem,
+                          fontWeight: FontWeight.w700,
+                          height: 1.2175 * ffem / fem,
+                          color: Color(0xffffffff),
                         ),
-                        Positioned(
-                          // startengineqoh (36:151)
-                          left: 35 * fem,
-                          top: 5 * fem,
-                          child: Align(
-                            child: SizedBox(
-                              width: 118 * fem,
-                              height: 22 * fem,
-                              child: Text(
-                                'Start engine',
-                                textAlign: TextAlign.center,
-                                style: SafeGoogleFont(
-                                  'Montserrat',
-                                  fontSize: 18 * ffem,
-                                  fontWeight: FontWeight.w700,
-                                  height: 1.2175 * ffem / fem,
-                                  color: Color(0xffffffff),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
+                      ),
                     ),
                   ),
                 ),

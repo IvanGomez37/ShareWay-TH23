@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:users_app/infoHandler/app_info.dart';
 import 'package:users_app/splashScreens/splash_screen.dart';
 import 'firebase_options.dart';
+import 'mainScreens/main_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -20,6 +21,9 @@ void main() async {
         primarySwatch: Colors.blue,
       ),
       home: MySplashScreen(),
+      routes: {
+        '/home' : (context) => MainScreen(),
+      },
     ),
   )));
 }

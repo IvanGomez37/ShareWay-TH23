@@ -18,7 +18,7 @@ class PaymentMethodScreen extends StatelessWidget {
           // selectpaymentUTm (34:42)
           padding: EdgeInsets.fromLTRB(35 * fem, 80 * fem, 36 * fem, 67 * fem),
           width: double.infinity,
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             color: Color(0xffffffff),
           ),
           child: Column(
@@ -36,7 +36,7 @@ class PaymentMethodScreen extends StatelessWidget {
                     fontSize: 18 * ffem,
                     fontWeight: FontWeight.w700,
                     height: 1.2175 * ffem / fem,
-                    color: Color(0xff000000),
+                    color: const Color(0xff000000),
                   ),
                 ),
               ),
@@ -48,11 +48,11 @@ class PaymentMethodScreen extends StatelessWidget {
                     EdgeInsets.fromLTRB(17 * fem, 14 * fem, 18 * fem, 69 * fem),
                 width: double.infinity,
                 decoration: BoxDecoration(
-                  color: Color(0x7fd9d9d9),
+                  color: const Color(0x7fd9d9d9),
                   borderRadius: BorderRadius.circular(3 * fem),
                   boxShadow: [
                     BoxShadow(
-                      color: Color(0x3f000000),
+                      color: const Color(0x3f000000),
                       offset: Offset(4 * fem, 4 * fem),
                       blurRadius: 2 * fem,
                     ),
@@ -84,7 +84,7 @@ class PaymentMethodScreen extends StatelessWidget {
                                     fontSize: 18 * ffem,
                                     fontWeight: FontWeight.w400,
                                     height: 1.2175 * ffem / fem,
-                                    color: Color(0xff000000),
+                                    color: const Color(0xff000000),
                                   ),
                                 ),
                               ),
@@ -118,10 +118,10 @@ class PaymentMethodScreen extends StatelessWidget {
                                     decoration: BoxDecoration(
                                       borderRadius:
                                           BorderRadius.circular(3 * fem),
-                                      color: Color(0xffffffff),
+                                      color: const Color(0xffffffff),
                                       boxShadow: [
                                         BoxShadow(
-                                          color: Color(0x3f000000),
+                                          color: const Color(0x3f000000),
                                           offset: Offset(0 * fem, 4 * fem),
                                           blurRadius: 2 * fem,
                                         ),
@@ -158,11 +158,11 @@ class PaymentMethodScreen extends StatelessWidget {
                           87 * fem, 1 * fem, 106 * fem, 0.45 * fem),
                       width: 253 * fem,
                       decoration: BoxDecoration(
-                        color: Color(0xffffffff),
+                        color: const Color(0xffffffff),
                         borderRadius: BorderRadius.circular(3 * fem),
                         boxShadow: [
                           BoxShadow(
-                            color: Color(0x3f000000),
+                            color: const Color(0x3f000000),
                             offset: Offset(0 * fem, 4 * fem),
                             blurRadius: 2 * fem,
                           ),
@@ -174,7 +174,7 @@ class PaymentMethodScreen extends StatelessWidget {
                           width: double.infinity,
                           height: 31.55 * fem,
                           child: Container(
-                            decoration: BoxDecoration(
+                            decoration: const BoxDecoration(
                               image: DecorationImage(
                                 fit: BoxFit.cover,
                                 image: AssetImage(
@@ -198,7 +198,7 @@ class PaymentMethodScreen extends StatelessWidget {
                           fontSize: 18 * ffem,
                           fontWeight: FontWeight.w400,
                           height: 1.2175 * ffem / fem,
-                          color: Color(0xff000000),
+                          color: const Color(0xff000000),
                         ),
                       ),
                     ),
@@ -227,10 +227,10 @@ class PaymentMethodScreen extends StatelessWidget {
                           child: Container(
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(8 * fem),
-                              color: Color(0xff0bd904),
+                              color: const Color(0xff0bd904),
                               boxShadow: [
                                 BoxShadow(
-                                  color: Color(0x3f000000),
+                                  color: const Color(0x3f000000),
                                   offset: Offset(0 * fem, 4 * fem),
                                   blurRadius: 2 * fem,
                                 ),
@@ -253,17 +253,17 @@ class PaymentMethodScreen extends StatelessWidget {
                         top: 5 * fem,
                         child: Align(
                           child: SizedBox(
-                            width: 87 * fem,
+                            width: 150 * fem,
                             height: 22 * fem,
                             child: Text(
-                              'Continue',
+                              'Continuar',
                               textAlign: TextAlign.center,
                               style: SafeGoogleFont(
                                 'Montserrat',
                                 fontSize: 18 * ffem,
                                 fontWeight: FontWeight.w700,
                                 height: 1.2175 * ffem / fem,
-                                color: Color(0xffffffff),
+                                color: const Color(0xffffffff),
                               ),
                             ),
                           ),

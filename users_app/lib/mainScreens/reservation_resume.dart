@@ -122,7 +122,7 @@ class ReservationResume extends StatelessWidget {
                       width: 156 * fem,
                       height: 122.77 * fem,
                       child: Image.asset(
-                        'assets/idealflow/images/image-4-PD5.png',
+                        'assets/idealflow/images/image-4-bhV.png',
                         fit: BoxFit.cover,
                       ),
                     ),
@@ -156,7 +156,7 @@ class ReservationResume extends StatelessWidget {
                       padding: EdgeInsets.symmetric(vertical: 5)
                       ),
                     child: Text(
-                      'Confirmar y ordenar',
+                      'Confirmar',
                       textAlign: TextAlign.center,
                       style: SafeGoogleFont(
                         'Montserrat',

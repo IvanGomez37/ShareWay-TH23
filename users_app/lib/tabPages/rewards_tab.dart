@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:users_app/tabPages/reward_complete_challenge.dart';
+import 'package:users_app/rewardsPages/reward_complete_challenge.dart';
 
 import '../rewardsPages/tester_option_page.dart';
 import '../utils.dart';
