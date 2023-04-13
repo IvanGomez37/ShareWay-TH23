@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_paypal/flutter_paypal.dart';
+import 'package:provider/provider.dart';
 
 import '../mainScreens/main_screen.dart';
 import '../mainScreens/walking_screen.dart';
@@ -17,6 +18,7 @@ class Payment extends StatefulWidget {
 }
 
 class _PaymentState extends State<Payment> {
+  final GlobalKey<_PaymentState> _myWidgetKey = GlobalKey<_PaymentState>();
   @override
   Widget build(BuildContext context) {
     double baseWidth = 360;
@@ -37,7 +39,8 @@ class _PaymentState extends State<Payment> {
             children: [
               Container(
                 // ensurethatyouarenotmoreunderda (84:77)
-                margin: EdgeInsets.fromLTRB(2 * fem, 0 * fem, 0 * fem, 29 * fem),
+                margin:
+                    EdgeInsets.fromLTRB(2 * fem, 0 * fem, 0 * fem, 29 * fem),
                 constraints: BoxConstraints(
                   maxWidth: 277 * fem,
                 ),
@@ -55,7 +58,8 @@ class _PaymentState extends State<Payment> {
               ),
               Container(
                 // toendsafecarmodepushthebuttonb (84:82)
-                margin: EdgeInsets.fromLTRB(13 * fem, 0 * fem, 0 * fem, 29 * fem),
+                margin:
+                    EdgeInsets.fromLTRB(13 * fem, 0 * fem, 0 * fem, 29 * fem),
                 constraints: BoxConstraints(
                   maxWidth: 279 * fem,
                 ),
@@ -72,7 +76,8 @@ class _PaymentState extends State<Payment> {
               ),
               Container(
                 // image53BYf (84:81)
-                margin: EdgeInsets.fromLTRB(2 * fem, 0 * fem, 0 * fem, 40 * fem),
+                margin:
+                    EdgeInsets.fromLTRB(2 * fem, 0 * fem, 0 * fem, 40 * fem),
                 child: TextButton(
                   onPressed: () {},
                   style: TextButton.styleFrom(
@@ -93,6 +98,7 @@ class _PaymentState extends State<Payment> {
                   Navigator.of(context).push(
                     MaterialPageRoute(
                       builder: (BuildContext context) => UsePaypal(
+                          key: _myWidgetKey,
                           sandboxMode: true,
                           clientId:
                               "AU9GR1nEHLcP8yHcVD8lawmjJUpihOiBjQbJCdhx1P8_oChzbm970fiCh6eketOjjgBYfgEUQGqvFrE9",
@@ -125,7 +131,7 @@ class _PaymentState extends State<Payment> {
                                     "currency": "USD"
                                   }
                                 ],
-    
+
                                 // shipping address is not required though
                                 "shipping_address": {
                                   "recipient_name": "Jane Foster",
@@ -143,28 +149,12 @@ class _PaymentState extends State<Payment> {
                           note: "Contactanos para mas informacion.",
                           onSuccess: (Map params) async {
                             print("onSuccess: $params");
-                            Navigator.of(context).push(
-                              MaterialPageRoute(
-                                builder: (BuildContext context) => WalkingCar(),
-                              ),
-                            );
                           },
                           onError: (error) {
                             print("onError: $error");
-                            Navigator.of(context).push(
-                              MaterialPageRoute(
-                                builder: (BuildContext context) => WalkingCar(),
-                              ),
-                            );
                           },
                           onCancel: (params) {
-                            print('cancelled: $params');
-                            Navigator.of(context).push(
-                              MaterialPageRoute(
-                                builder: (BuildContext context) =>
-                                    WalkingScreen(),
-                              ),
-                            );
+                            print("onSuccess: $params");
                           }),
                     ),
                   )
@@ -182,13 +172,15 @@ class _PaymentState extends State<Payment> {
                 ),
                 style: ElevatedButton.styleFrom(padding: EdgeInsets.all(10)),
               ),
-              SizedBox(height: 35,),
+              SizedBox(
+                height: 35,
+              ),
               ElevatedButton(
                 onPressed: () => {
-                  Navigator.pushAndRemoveUntil(
-                    context,
-                    MaterialPageRoute(builder: (context) => MainScreen()),
-                    (Route<dynamic> route) => false,
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (BuildContext context) => MainScreen(),
+                    ),
                   )
                 },
                 child: Text(
@@ -205,7 +197,31 @@ class _PaymentState extends State<Payment> {
                 style: ElevatedButton.styleFrom(
                   padding: EdgeInsets.all(10),
                   backgroundColor: Colors.red.shade700,
+                ),
+              ),
+              ElevatedButton(
+                onPressed: () => {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (BuildContext context) => WalkingCar(),
+                    ),
+                  )
+                },
+                child: Text(
+                  'Continuar',
+                  textAlign: TextAlign.center,
+                  style: SafeGoogleFont(
+                    'Montserrat',
+                    fontSize: 25 * ffem,
+                    fontWeight: FontWeight.w800,
+                    height: 1.2175 * ffem / fem,
+                    color: Color(0xffffffff),
                   ),
+                ),
+                style: ElevatedButton.styleFrom(
+                  padding: EdgeInsets.all(10),
+                  backgroundColor: Colors.red.shade700,
+                ),
               ),
             ],
           ),

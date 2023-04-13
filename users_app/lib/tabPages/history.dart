@@ -35,8 +35,8 @@ class History extends StatelessWidget {
               ),
             ),
             GestureDetector(
-              onTap: () => Navigator.push(
-                  context, MaterialPageRoute(builder: (builder) => HistoryDetails())),
+              onTap: () => Navigator.push(context,
+                  MaterialPageRoute(builder: (builder) => HistoryDetails())),
               child: Container(
                 // autogroup4od5wQw (TVJFZgxXmmRmbxuDF34oD5)
                 margin:
@@ -58,7 +58,6 @@ class History extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    
                     Container(
                       // autogroupmc8jSH9 (TVJGDkhSTUajkdtp8hMC8j)
                       margin: EdgeInsets.fromLTRB(
@@ -405,22 +404,6 @@ class History extends StatelessWidget {
                 ),
               ),
             ),
-            ElevatedButton(
-              onPressed: () => Navigator.pop(context),
-              child: Text(
-                'Return',
-                textAlign: TextAlign.center,
-                style: SafeGoogleFont(
-                  'Montserrat',
-                  fontSize: 18 * ffem,
-                  fontWeight: FontWeight.w700,
-                  height: 1.2175 * ffem / fem,
-                  color: Color(0xffffffff),
-                ),
-              ),
-              style:
-                  ElevatedButton.styleFrom(backgroundColor: Color(0xfff28705)),
-            )
           ],
         ),
       ),
