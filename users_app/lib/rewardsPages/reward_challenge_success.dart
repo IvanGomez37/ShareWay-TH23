@@ -143,8 +143,11 @@ class RewardChallengeSuccessPage extends StatelessWidget {
                     ),
                   ),
                   GestureDetector(
-                    onTap: () => Navigator.push(context,
-                        MaterialPageRoute(builder: (c) => MainScreen())),
+                    onTap: () => Navigator.pushAndRemoveUntil(
+                      context,
+                      MaterialPageRoute(builder: (context) => MainScreen()),
+                      (Route<dynamic> route) => false,
+                    ),
                     child: Container(
                       // autogroupzxkxKsq (CERZf62Y4xaR78E1R2zXkX)
                       width: double.infinity,
