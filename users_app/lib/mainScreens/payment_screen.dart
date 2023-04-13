@@ -151,6 +151,7 @@ class PaymentMethodScreen extends StatelessWidget {
                         ],
                       ),
                     ),
+                    /*
                     Container(
                       // autogrouprnpsL5y (KWAMrRigKTfxnHgawKRnps)
                       margin: EdgeInsets.fromLTRB(
@@ -187,6 +188,7 @@ class PaymentMethodScreen extends StatelessWidget {
                         ),
                       ),
                     ),
+                    */
                     Container(
                       // oraddanewonebAK (34:60)
                       margin: EdgeInsets.fromLTRB(
