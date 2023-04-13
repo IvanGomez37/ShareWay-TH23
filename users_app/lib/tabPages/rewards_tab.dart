@@ -93,59 +93,67 @@ class _RewardsTabPageState extends State<RewardsTabPage>
                     ],
                   ),
                 ),
-                Container(
-                  // autogroupbt7hMDm (CER12rioJ447x1LzjrbT7h)
-                  margin:
-                      EdgeInsets.fromLTRB(0 * fem, 0 * fem, 0 * fem, 19 * fem),
-                  padding: EdgeInsets.fromLTRB(
-                      30.5 * fem, 9 * fem, 6.5 * fem, 11 * fem),
-                  width: double.maxFinite,
-                  decoration: BoxDecoration(
-                    color: Color(0xff05c7f2),
-                    borderRadius: BorderRadius.circular(3 * fem),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Color(0x3f000000),
-                        offset: Offset(4 * fem, 4 * fem),
-                        blurRadius: 2 * fem,
-                      ),
-                    ],
-                  ),
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Container(
-                        // ptsvgB (69:51)
-                        margin: EdgeInsets.fromLTRB(
-                            0 * fem, 0 * fem, 10 * fem, 0 * fem),
-                        child: Text(
-                          '880 pts.',
-                          textAlign: TextAlign.center,
-                          style: SafeGoogleFont(
-                            'Montserrat',
-                            fontSize: 20 * ffem,
-                            fontWeight: FontWeight.w800,
-                            height: 1.2175 * ffem / fem,
-                            color: Color(0xffffffff),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (builder) => RewardsRewardsPage()));
+                  },
+                  child: Container(
+                    // autogroupbt7hMDm (CER12rioJ447x1LzjrbT7h)
+                    margin: EdgeInsets.fromLTRB(
+                        0 * fem, 0 * fem, 0 * fem, 19 * fem),
+                    padding: EdgeInsets.fromLTRB(
+                        30.5 * fem, 9 * fem, 6.5 * fem, 11 * fem),
+                    width: double.maxFinite,
+                    decoration: BoxDecoration(
+                      color: Color(0xff05c7f2),
+                      borderRadius: BorderRadius.circular(3 * fem),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Color(0x3f000000),
+                          offset: Offset(4 * fem, 4 * fem),
+                          blurRadius: 2 * fem,
+                        ),
+                      ],
+                    ),
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Container(
+                          // ptsvgB (69:51)
+                          margin: EdgeInsets.fromLTRB(
+                              0 * fem, 0 * fem, 10 * fem, 0 * fem),
+                          child: Text(
+                            '880 pts.',
+                            textAlign: TextAlign.center,
+                            style: SafeGoogleFont(
+                              'Montserrat',
+                              fontSize: 20 * ffem,
+                              fontWeight: FontWeight.w800,
+                              height: 1.2175 * ffem / fem,
+                              color: Color(0xffffffff),
+                            ),
                           ),
                         ),
-                      ),
-                      Container(
-                        // communitypointswalletNo5 (69:52)
-                        constraints: BoxConstraints(maxWidth: 188 * ffem),
-                        child: Text(
-                          'Community Points Wallet',
-                          textAlign: TextAlign.center,
-                          style: SafeGoogleFont(
-                            'Montserrat',
-                            fontSize: 20 * ffem,
-                            fontWeight: FontWeight.w400,
-                            height: 1.2175 * ffem / fem,
-                            color: Color(0xffffffff),
+                        Container(
+                          // communitypointswalletNo5 (69:52)
+                          constraints: BoxConstraints(maxWidth: 188 * ffem),
+                          child: Text(
+                            'Community Points Wallet',
+                            textAlign: TextAlign.center,
+                            style: SafeGoogleFont(
+                              'Montserrat',
+                              fontSize: 20 * ffem,
+                              fontWeight: FontWeight.w400,
+                              height: 1.2175 * ffem / fem,
+                              color: Color(0xffffffff),
+                            ),
                           ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
                 Container(

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
 import 'dart:ui';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:users_app/rewardsPages/reward_challenge_success.dart';
 
 import '../utils.dart';
 
@@ -83,31 +84,38 @@ class RewardsRewardsPage extends StatelessWidget {
                       height: 50 * fem,
                       child: Stack(
                         children: [
-                          Positioned(
-                            // rectangle16DVu (69:151)
-                            left: 0 * fem,
-                            top: 2 * fem,
-                            child: Align(
-                              child: SizedBox(
-                                width: 302 * fem,
-                                height: 48 * fem,
-                                child: TextButton(
-                                  onPressed: () {},
-                                  style: TextButton.styleFrom(
-                                    padding: EdgeInsets.zero,
-                                  ),
-                                  child: Container(
-                                    decoration: BoxDecoration(
-                                      borderRadius:
-                                          BorderRadius.circular(3 * fem),
-                                      color: Color(0xffffffff),
-                                      boxShadow: [
-                                        BoxShadow(
-                                          color: Color(0x3f000000),
-                                          offset: Offset(0 * fem, 4 * fem),
-                                          blurRadius: 2 * fem,
-                                        ),
-                                      ],
+                          GestureDetector(
+                            onTap: () => Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (builder) =>
+                                        RewardChallengeSuccessPage())),
+                            child: Positioned(
+                              // rectangle16DVu (69:151)
+                              left: 0 * fem,
+                              top: 2 * fem,
+                              child: Align(
+                                child: SizedBox(
+                                  width: 302 * fem,
+                                  height: 48 * fem,
+                                  child: TextButton(
+                                    onPressed: () {},
+                                    style: TextButton.styleFrom(
+                                      padding: EdgeInsets.zero,
+                                    ),
+                                    child: Container(
+                                      decoration: BoxDecoration(
+                                        borderRadius:
+                                            BorderRadius.circular(3 * fem),
+                                        color: Color(0xffffffff),
+                                        boxShadow: [
+                                          BoxShadow(
+                                            color: Color(0x3f000000),
+                                            offset: Offset(0 * fem, 4 * fem),
+                                            blurRadius: 2 * fem,
+                                          ),
+                                        ],
+                                      ),
                                     ),
                                   ),
                                 ),
@@ -645,31 +653,34 @@ class RewardsRewardsPage extends StatelessWidget {
                         ],
                       ),
                     ),
-                    Container(
-                      // autogroup4gdh8uZ (CERGaaUyRvQRHWx72S4GDH)
-                      width: double.infinity,
-                      height: 31 * fem,
-                      decoration: BoxDecoration(
-                        color: Color(0xffaedae3),
-                        borderRadius: BorderRadius.circular(3 * fem),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Color(0x3f000000),
-                            offset: Offset(0 * fem, 4 * fem),
-                            blurRadius: 2 * fem,
-                          ),
-                        ],
-                      ),
-                      child: Center(
-                        child: Text(
-                          'Confirm',
-                          textAlign: TextAlign.center,
-                          style: SafeGoogleFont(
-                            'Montserrat',
-                            fontSize: 18 * ffem,
-                            fontWeight: FontWeight.w700,
-                            height: 1.2175 * ffem / fem,
-                            color: Color(0xffffffff),
+                    GestureDetector(
+                      onTap: () => Navigator.pop(context),
+                      child: Container(
+                        // autogroup4gdh8uZ (CERGaaUyRvQRHWx72S4GDH)
+                        width: double.infinity,
+                        height: 31 * fem,
+                        decoration: BoxDecoration(
+                          color: Color(0xffaedae3),
+                          borderRadius: BorderRadius.circular(3 * fem),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Color(0x3f000000),
+                              offset: Offset(0 * fem, 4 * fem),
+                              blurRadius: 2 * fem,
+                            ),
+                          ],
+                        ),
+                        child: Center(
+                          child: Text(
+                            'Return',
+                            textAlign: TextAlign.center,
+                            style: SafeGoogleFont(
+                              'Montserrat',
+                              fontSize: 18 * ffem,
+                              fontWeight: FontWeight.w700,
+                              height: 1.2175 * ffem / fem,
+                              color: Color(0xffffffff),
+                            ),
                           ),
                         ),
                       ),
