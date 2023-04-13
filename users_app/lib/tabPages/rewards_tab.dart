@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:users_app/rewardsPages/reward_challenge_success.dart';
 import 'package:users_app/rewardsPages/reward_complete_challenge.dart';
+import 'package:users_app/rewardsPages/rewards_challenges.dart';
+import 'package:users_app/rewardsPages/rewards_rewards.dart';
+import 'package:users_app/rewardsPages/rewards_wallet.dart';
 
 import '../rewardsPages/tester_option_page.dart';
 import '../utils.dart';
@@ -153,243 +157,261 @@ class _RewardsTabPageState extends State<RewardsTabPage>
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Container(
-                        // autogrouphj79VFR (CER1tAdyHiGFCQx9FyHj79)
-                        padding: EdgeInsets.fromLTRB(
-                            5 * fem, 1 * fem, 7 * fem, 10.65 * fem),
-                        width: 100 * fem,
-                        height: double.infinity,
-                        decoration: BoxDecoration(
-                          color: Color(0x7fd9d9d9),
-                          borderRadius: BorderRadius.circular(3 * fem),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Color(0x3f000000),
-                              offset: Offset(4 * fem, 4 * fem),
-                              blurRadius: 2 * fem,
-                            ),
-                          ],
-                        ),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Container(
-                              // autogrouppqubsFy (CER25aUdAaYmUyTLjWpQUB)
-                              margin: EdgeInsets.fromLTRB(
-                                  12.5 * fem, 0 * fem, 10.5 * fem, 2 * fem),
-                              width: double.infinity,
-                              height: 25 * fem,
-                              child: Stack(
-                                children: [
-                                  Positioned(
-                                    // inttravelerLfM (66:8)
-                                    left: 0 * fem,
-                                    top: 0 * fem,
-                                    child: Align(
-                                      child: SizedBox(
-                                        width: 65 * fem,
-                                        height: 15 * fem,
-                                        child: Text(
-                                          'int traveler',
-                                          textAlign: TextAlign.center,
-                                          style: SafeGoogleFont(
-                                            'Montserrat',
-                                            fontSize: 12 * ffem,
-                                            fontWeight: FontWeight.w400,
-                                            height: 1.2175 * ffem / fem,
-                                            color: Color(0xff000000),
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (builder) =>
+                                      RewardChallengeSuccessPage()));
+                        },
+                        child: Container(
+                          // autogrouphj79VFR (CER1tAdyHiGFCQx9FyHj79)
+                          padding: EdgeInsets.fromLTRB(
+                              5 * fem, 1 * fem, 7 * fem, 10.65 * fem),
+                          width: 100 * fem,
+                          height: double.infinity,
+                          decoration: BoxDecoration(
+                            color: Color(0x7fd9d9d9),
+                            borderRadius: BorderRadius.circular(3 * fem),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Color(0x3f000000),
+                                offset: Offset(4 * fem, 4 * fem),
+                                blurRadius: 2 * fem,
+                              ),
+                            ],
+                          ),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Container(
+                                // autogrouppqubsFy (CER25aUdAaYmUyTLjWpQUB)
+                                margin: EdgeInsets.fromLTRB(
+                                    12.5 * fem, 0 * fem, 10.5 * fem, 2 * fem),
+                                width: double.infinity,
+                                height: 25 * fem,
+                                child: Stack(
+                                  children: [
+                                    Positioned(
+                                      // inttravelerLfM (66:8)
+                                      left: 0 * fem,
+                                      top: 0 * fem,
+                                      child: Align(
+                                        child: SizedBox(
+                                          width: 65 * fem,
+                                          height: 15 * fem,
+                                          child: Text(
+                                            'int traveler',
+                                            textAlign: TextAlign.center,
+                                            style: SafeGoogleFont(
+                                              'Montserrat',
+                                              fontSize: 12 * ffem,
+                                              fontWeight: FontWeight.w400,
+                                              height: 1.2175 * ffem / fem,
+                                              color: Color(0xff000000),
+                                            ),
                                           ),
                                         ),
                                       ),
                                     ),
-                                  ),
-                                  Positioned(
-                                    // ptsAPV (66:22)
-                                    left: 16.5 * fem,
-                                    top: 14 * fem,
-                                    child: Align(
-                                      child: SizedBox(
-                                        width: 30 * fem,
-                                        height: 11 * fem,
-                                        child: Text(
-                                          '50 pts.',
-                                          textAlign: TextAlign.center,
-                                          style: SafeGoogleFont(
-                                            'Montserrat',
-                                            fontSize: 9 * ffem,
-                                            fontWeight: FontWeight.w400,
-                                            height: 1.2175 * ffem / fem,
-                                            color: Color(0xff000000),
+                                    Positioned(
+                                      // ptsAPV (66:22)
+                                      left: 16.5 * fem,
+                                      top: 14 * fem,
+                                      child: Align(
+                                        child: SizedBox(
+                                          width: 30 * fem,
+                                          height: 11 * fem,
+                                          child: Text(
+                                            '50 pts.',
+                                            textAlign: TextAlign.center,
+                                            style: SafeGoogleFont(
+                                              'Montserrat',
+                                              fontSize: 9 * ffem,
+                                              fontWeight: FontWeight.w400,
+                                              height: 1.2175 * ffem / fem,
+                                              color: Color(0xff000000),
+                                            ),
                                           ),
                                         ),
                                       ),
                                     ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            Container(
-                              // travel50kilometersonsharewaytr (66:9)
-                              margin: EdgeInsets.fromLTRB(
-                                  0 * fem, 0 * fem, 0 * fem, 7 * fem),
-                              constraints: BoxConstraints(
-                                maxWidth: 88 * fem,
-                              ),
-                              child: Text(
-                                'travel 50 kilometers on shareway trips.',
-                                style: SafeGoogleFont(
-                                  'Montserrat',
-                                  fontSize: 9 * ffem,
-                                  fontWeight: FontWeight.w100,
-                                  height: 1.2175 * ffem / fem,
-                                  color: Color(0xff000000),
+                                  ],
                                 ),
                               ),
-                            ),
-                            Container(
-                              // image30cuh (66:11)
-                              margin: EdgeInsets.fromLTRB(
-                                  2 * fem, 0 * fem, 0 * fem, 9 * fem),
-                              width: 50 * fem,
-                              height: 50 * fem,
-                              child: Image.asset(
-                                'assets/idealflow/images/image-30.png',
-                                fit: BoxFit.cover,
+                              Container(
+                                // travel50kilometersonsharewaytr (66:9)
+                                margin: EdgeInsets.fromLTRB(
+                                    0 * fem, 0 * fem, 0 * fem, 7 * fem),
+                                constraints: BoxConstraints(
+                                  maxWidth: 88 * fem,
+                                ),
+                                child: Text(
+                                  'travel 50 kilometers on shareway trips.',
+                                  style: SafeGoogleFont(
+                                    'Montserrat',
+                                    fontSize: 9 * ffem,
+                                    fontWeight: FontWeight.w100,
+                                    height: 1.2175 * ffem / fem,
+                                    color: Color(0xff000000),
+                                  ),
+                                ),
                               ),
-                            ),
-                            Container(
-                              // image316K5 (66:13)
-                              margin: EdgeInsets.fromLTRB(
-                                  2 * fem, 0 * fem, 0 * fem, 0 * fem),
-                              width: 80 * fem,
-                              height: 4.35 * fem,
-                              child: Image.asset(
-                                'assets/idealflow/images/image-31.png',
-                                fit: BoxFit.cover,
+                              Container(
+                                // image30cuh (66:11)
+                                margin: EdgeInsets.fromLTRB(
+                                    2 * fem, 0 * fem, 0 * fem, 9 * fem),
+                                width: 50 * fem,
+                                height: 50 * fem,
+                                child: Image.asset(
+                                  'assets/idealflow/images/image-30.png',
+                                  fit: BoxFit.cover,
+                                ),
                               ),
-                            ),
-                          ],
+                              Container(
+                                // image316K5 (66:13)
+                                margin: EdgeInsets.fromLTRB(
+                                    2 * fem, 0 * fem, 0 * fem, 0 * fem),
+                                width: 80 * fem,
+                                height: 4.35 * fem,
+                                child: Image.asset(
+                                  'assets/idealflow/images/image-31.png',
+                                  fit: BoxFit.cover,
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                       SizedBox(
                         width: 11 * fem,
                       ),
-                      Container(
-                        // autogroupfc2f8Fm (CER2kZMfyLUFABr2nAFC2f)
-                        padding: EdgeInsets.fromLTRB(
-                            5 * fem, 1 * fem, 10 * fem, 10.65 * fem),
-                        width: 100 * fem,
-                        height: double.infinity,
-                        decoration: BoxDecoration(
-                          color: Color(0x7fd9d9d9),
-                          borderRadius: BorderRadius.circular(3 * fem),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Color(0x3f000000),
-                              offset: Offset(4 * fem, 4 * fem),
-                              blurRadius: 2 * fem,
-                            ),
-                          ],
-                        ),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Container(
-                              // autogroupq44sWn7 (CER2yU9pxTq48BN6sVq44s)
-                              margin: EdgeInsets.fromLTRB(
-                                  13 * fem, 0 * fem, 8 * fem, 2 * fem),
-                              width: double.infinity,
-                              height: 25 * fem,
-                              child: Stack(
-                                children: [
-                                  Positioned(
-                                    // pts1D5 (66:23)
-                                    left: 14 * fem,
-                                    top: 14 * fem,
-                                    child: Align(
-                                      child: SizedBox(
-                                        width: 36 * fem,
-                                        height: 11 * fem,
-                                        child: Text(
-                                          '300 pts.',
-                                          textAlign: TextAlign.center,
-                                          style: SafeGoogleFont(
-                                            'Montserrat',
-                                            fontSize: 9 * ffem,
-                                            fontWeight: FontWeight.w400,
-                                            height: 1.2175 * ffem / fem,
-                                            color: Color(0xff000000),
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (builder) =>
+                                      RewardsUnCompletedChallenge()));
+                        },
+                        child: Container(
+                          // autogroupfc2f8Fm (CER2kZMfyLUFABr2nAFC2f)
+                          padding: EdgeInsets.fromLTRB(
+                              5 * fem, 1 * fem, 10 * fem, 10.65 * fem),
+                          width: 100 * fem,
+                          height: double.infinity,
+                          decoration: BoxDecoration(
+                            color: Color(0x7fd9d9d9),
+                            borderRadius: BorderRadius.circular(3 * fem),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Color(0x3f000000),
+                                offset: Offset(4 * fem, 4 * fem),
+                                blurRadius: 2 * fem,
+                              ),
+                            ],
+                          ),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Container(
+                                // autogroupq44sWn7 (CER2yU9pxTq48BN6sVq44s)
+                                margin: EdgeInsets.fromLTRB(
+                                    13 * fem, 0 * fem, 8 * fem, 2 * fem),
+                                width: double.infinity,
+                                height: 25 * fem,
+                                child: Stack(
+                                  children: [
+                                    Positioned(
+                                      // pts1D5 (66:23)
+                                      left: 14 * fem,
+                                      top: 14 * fem,
+                                      child: Align(
+                                        child: SizedBox(
+                                          width: 36 * fem,
+                                          height: 11 * fem,
+                                          child: Text(
+                                            '300 pts.',
+                                            textAlign: TextAlign.center,
+                                            style: SafeGoogleFont(
+                                              'Montserrat',
+                                              fontSize: 9 * ffem,
+                                              fontWeight: FontWeight.w400,
+                                              height: 1.2175 * ffem / fem,
+                                              color: Color(0xff000000),
+                                            ),
                                           ),
                                         ),
                                       ),
                                     ),
-                                  ),
-                                  Positioned(
-                                    // superuserT55 (66:15)
-                                    left: 0 * fem,
-                                    top: 0 * fem,
-                                    child: Align(
-                                      child: SizedBox(
-                                        width: 64 * fem,
-                                        height: 15 * fem,
-                                        child: Text(
-                                          'super user',
-                                          textAlign: TextAlign.center,
-                                          style: SafeGoogleFont(
-                                            'Montserrat',
-                                            fontSize: 12 * ffem,
-                                            fontWeight: FontWeight.w400,
-                                            height: 1.2175 * ffem / fem,
-                                            color: Color(0xff000000),
+                                    Positioned(
+                                      // superuserT55 (66:15)
+                                      left: 0 * fem,
+                                      top: 0 * fem,
+                                      child: Align(
+                                        child: SizedBox(
+                                          width: 64 * fem,
+                                          height: 15 * fem,
+                                          child: Text(
+                                            'super user',
+                                            textAlign: TextAlign.center,
+                                            style: SafeGoogleFont(
+                                              'Montserrat',
+                                              fontSize: 12 * ffem,
+                                              fontWeight: FontWeight.w400,
+                                              height: 1.2175 * ffem / fem,
+                                              color: Color(0xff000000),
+                                            ),
                                           ),
                                         ),
                                       ),
                                     ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            Container(
-                              // achieve100sharewaytripsHK1 (66:14)
-                              margin: EdgeInsets.fromLTRB(
-                                  0 * fem, 0 * fem, 22 * fem, 7 * fem),
-                              constraints: BoxConstraints(
-                                maxWidth: 63 * fem,
-                              ),
-                              child: Text(
-                                'achieve 100 shareway trips',
-                                style: SafeGoogleFont(
-                                  'Montserrat',
-                                  fontSize: 9 * ffem,
-                                  fontWeight: FontWeight.w100,
-                                  height: 1.2175 * ffem / fem,
-                                  color: Color(0xff000000),
+                                  ],
                                 ),
                               ),
-                            ),
-                            Container(
-                              // image32jB1 (66:16)
-                              margin: EdgeInsets.fromLTRB(
-                                  5 * fem, 0 * fem, 0 * fem, 9 * fem),
-                              width: 50 * fem,
-                              height: 50 * fem,
-                              child: Image.asset(
-                                'assets/idealflow/images/image-32.png',
-                                fit: BoxFit.cover,
+                              Container(
+                                // achieve100sharewaytripsHK1 (66:14)
+                                margin: EdgeInsets.fromLTRB(
+                                    0 * fem, 0 * fem, 22 * fem, 7 * fem),
+                                constraints: BoxConstraints(
+                                  maxWidth: 63 * fem,
+                                ),
+                                child: Text(
+                                  'achieve 100 shareway trips',
+                                  style: SafeGoogleFont(
+                                    'Montserrat',
+                                    fontSize: 9 * ffem,
+                                    fontWeight: FontWeight.w100,
+                                    height: 1.2175 * ffem / fem,
+                                    color: Color(0xff000000),
+                                  ),
+                                ),
                               ),
-                            ),
-                            Container(
-                              // image33pCT (66:17)
-                              margin: EdgeInsets.fromLTRB(
-                                  5 * fem, 0 * fem, 0 * fem, 0 * fem),
-                              width: 80 * fem,
-                              height: 4.35 * fem,
-                              child: Image.asset(
-                                'assets/idealflow/images/image-33.png',
-                                fit: BoxFit.cover,
+                              Container(
+                                // image32jB1 (66:16)
+                                margin: EdgeInsets.fromLTRB(
+                                    5 * fem, 0 * fem, 0 * fem, 9 * fem),
+                                width: 50 * fem,
+                                height: 50 * fem,
+                                child: Image.asset(
+                                  'assets/idealflow/images/image-32.png',
+                                  fit: BoxFit.cover,
+                                ),
                               ),
-                            ),
-                          ],
+                              Container(
+                                // image33pCT (66:17)
+                                margin: EdgeInsets.fromLTRB(
+                                    5 * fem, 0 * fem, 0 * fem, 0 * fem),
+                                width: 80 * fem,
+                                height: 4.35 * fem,
+                                child: Image.asset(
+                                  'assets/idealflow/images/image-33.png',
+                                  fit: BoxFit.cover,
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                       SizedBox(
@@ -533,7 +555,12 @@ class _RewardsTabPageState extends State<RewardsTabPage>
                   margin: EdgeInsets.fromLTRB(
                       281 * fem, 0 * fem, 0 * fem, 11 * fem),
                   child: TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (builder) => RewardsChallenges()));
+                    },
                     style: TextButton.styleFrom(
                       padding: EdgeInsets.zero,
                     ),
@@ -817,23 +844,32 @@ class _RewardsTabPageState extends State<RewardsTabPage>
                                     ),
                                   ),
                                 ),
-                                Positioned(
-                                  // seeallZTR (66:29)
-                                  left: 77 * fem,
-                                  top: 3.8889160156 * fem,
-                                  child: Align(
-                                    child: SizedBox(
-                                      width: 62 * fem,
-                                      height: 22 * fem,
-                                      child: Text(
-                                        'See all\n',
-                                        textAlign: TextAlign.center,
-                                        style: SafeGoogleFont(
-                                          'Montserrat',
-                                          fontSize: 18 * ffem,
-                                          fontWeight: FontWeight.w700,
-                                          height: 1.2175 * ffem / fem,
-                                          color: Color(0xffffffff),
+                                GestureDetector(
+                                  onTap: () {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (builder) =>
+                                                RewardsRewardsPage()));
+                                  },
+                                  child: Positioned(
+                                    // seeallZTR (66:29)
+                                    left: 77 * fem,
+                                    top: 3.8889160156 * fem,
+                                    child: Align(
+                                      child: SizedBox(
+                                        width: 62 * fem,
+                                        height: 22 * fem,
+                                        child: Text(
+                                          'See all\n',
+                                          textAlign: TextAlign.center,
+                                          style: SafeGoogleFont(
+                                            'Montserrat',
+                                            fontSize: 18 * ffem,
+                                            fontWeight: FontWeight.w700,
+                                            height: 1.2175 * ffem / fem,
+                                            color: Color(0xffffffff),
+                                          ),
                                         ),
                                       ),
                                     ),

@@ -329,7 +329,7 @@ class _HomeTabPageState extends State<HomeTabPage>
                             child: ListTile(
                               title: Text(cars![position].model),
                               subtitle: Text(
-                                  'Año: ${cars![position].year.toString()}\nCapacidad: ${cars![position].capacity.toString()} personas'),
+                                  'Year: ${cars![position].year.toString()}\nCapacity: ${cars![position].capacity.toString()} people'),
                               leading: Container(
                                 height: 60,
                                 width: 80,

@@ -5,7 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 import '../utils.dart';
 
-class TesterOptionPage extends StatelessWidget {
+class RewardsUnCompletedChallenge extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double baseWidth = 360;
@@ -175,51 +175,53 @@ class TesterOptionPage extends StatelessWidget {
                           ),
                           child: Stack(
                             children: [
-                              Positioned(
-                                // rectangle6mcX (69:56)
-                                left: 15 * fem,
-                                top: 0 * fem,
-                                child: Align(
-                                  child: SizedBox(
-                                    width: 187 * fem,
-                                    height: 36 * fem,
-                                    child: Container(
-                                      decoration: BoxDecoration(
-                                        borderRadius:
-                                            BorderRadius.circular(8 * fem),
-                                        color: Color(0xff05c7f2),
-                                        boxShadow: [
-                                          BoxShadow(
-                                            color: Color(0x3f000000),
-                                            offset: Offset(0 * fem, 4 * fem),
-                                            blurRadius: 2 * fem,
-                                          ),
-                                        ],
+                              GestureDetector(
+                                onTap: () {
+                                  Navigator.pop(context);
+                                },
+                                child: Positioned(
+                                  // rectangle6mcX (69:56)
+                                  left: 15 * fem,
+                                  top: 0 * fem,
+                                  child: Align(
+                                    child: SizedBox(
+                                      width: 187 * fem,
+                                      height: 36 * fem,
+                                      child: Container(
+                                        decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(8 * fem),
+                                          color: Color(0xff05c7f2),
+                                          boxShadow: [
+                                            BoxShadow(
+                                              color: Color(0x3f000000),
+                                              offset: Offset(0 * fem, 4 * fem),
+                                              blurRadius: 2 * fem,
+                                            ),
+                                          ],
+                                        ),
                                       ),
                                     ),
                                   ),
                                 ),
                               ),
-                              GestureDetector(
-                                onTap: () => Navigator.pop(context),
-                                child: Positioned(
-                                  // returnZoH (69:57)
-                                  left: 75.5 * fem,
-                                  top: 5 * fem,
-                                  child: Align(
-                                    child: SizedBox(
-                                      width: 65 * fem,
-                                      height: 22 * fem,
-                                      child: Text(
-                                        'Return',
-                                        textAlign: TextAlign.center,
-                                        style: SafeGoogleFont(
-                                          'Montserrat',
-                                          fontSize: 18 * ffem,
-                                          fontWeight: FontWeight.w700,
-                                          height: 1.2175 * ffem / fem,
-                                          color: Color(0xffffffff),
-                                        ),
+                              Positioned(
+                                // returnZoH (69:57)
+                                left: 75.5 * fem,
+                                top: 5 * fem,
+                                child: Align(
+                                  child: SizedBox(
+                                    width: 65 * fem,
+                                    height: 22 * fem,
+                                    child: Text(
+                                      'Return',
+                                      textAlign: TextAlign.center,
+                                      style: SafeGoogleFont(
+                                        'Montserrat',
+                                        fontSize: 18 * ffem,
+                                        fontWeight: FontWeight.w700,
+                                        height: 1.2175 * ffem / fem,
+                                        color: Color(0xffffffff),
                                       ),
                                     ),
                                   ),
