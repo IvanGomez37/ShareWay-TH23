@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:users_app/mainScreens/driving_open_car_advice.dart';
 import 'package:users_app/mainScreens/walking_to_car.dart';
 
+import '../payment/payment.dart';
 import '../utils.dart';
 
 class PaymentMethodScreen extends StatelessWidget {
@@ -242,10 +243,8 @@ class PaymentMethodScreen extends StatelessWidget {
                     ),
                     GestureDetector(
                       onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (builder) => WalkingCar()));
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (builder) => Payment()));
                       },
                       child: Positioned(
                         // continueofh (34:65)
